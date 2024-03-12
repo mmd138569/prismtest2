@@ -1,0 +1,55 @@
+﻿<Window x:Class="prismtest2.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" MaxHeight="500" MinWidth="30" MinHeight="500" MaxWidth="310" >
+    <Grid  Background="#31363F">
+        <Path Data="{StaticResource TestIcon}" Fill="White" HorizontalAlignment="Center" Margin="0,22,0,0"/>
+        <Path Data="{StaticResource circul}" Fill="White" HorizontalAlignment="Center" Margin="0,10,4,0"/>
+
+<StackPanel>
+            <StackPanel Margin="2,90,2,2" Visibility="Visible" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="User Name:" Foreground="Bisque" Margin="12,20,2,2"></Label>
+                    <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180"  Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Pass Word:" Foreground="Bisque" Margin="12,20,6,2"></Label>
+                    <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" ></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Margin="1,120,1,1">
+                <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Log in" Margin="2,2,2,20" Command="{Binding Login}">
+                    <Button.Style >
+                        <Style TargetType="Button" >
+                            <Setter Property="Background" Value="#0C2D57"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#0C2D57"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Template="{DynamicResource round}"  Width="100" Height="40" Foreground="Bisque" BorderBrush="Bisque" Background="#31363F" Content="Sign Up" Margin="2,2,2,10" Command="{Binding Signup}">
+                    <Button.Style >
+                        <Style TargetType="Button" >
+                            <Setter Property="Background" Value="#0C2D57"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#0C2D57"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+        </StackPanel>
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+
+    </Grid>
+
+</Window>
