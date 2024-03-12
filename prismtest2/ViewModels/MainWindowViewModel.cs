@@ -25,6 +25,7 @@ namespace prismtest2.ViewModels
             Login = new DelegateCommand(LoginClick);
         }
 
+
         private void LoginClick()
         {
             _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
