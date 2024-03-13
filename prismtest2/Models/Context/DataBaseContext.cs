@@ -11,10 +11,7 @@ namespace prismtest2.Models.Context
 {
     public class DataBaseContext:DbContext
     {
-        public DataBaseContext()
-        {
-            
-        }
+        public DataBaseContext(){  }
         public DbSet<Users> username { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
