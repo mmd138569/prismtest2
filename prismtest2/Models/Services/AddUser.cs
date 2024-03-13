@@ -19,6 +19,7 @@ namespace prismtest2.Models.Services
         public void adduser(Users users)
         {
             context.username.Add(users);
+            context.SaveChanges();
         }
     }
 }

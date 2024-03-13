@@ -16,7 +16,8 @@ namespace prismtest2.Models.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.; Database=SampleProject; Integrated Security=True; Encrypt=False");
-            base.OnConfiguring(optionsBuilder);
+            // if you use the next line code it change the id from int to decimal and ruin every thing 
+            //base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

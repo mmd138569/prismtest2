@@ -11,8 +11,8 @@ using prismtest2.Models.Context;
 namespace prismtest2.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240313061504_init")]
-    partial class init
+    [Migration("20240313113651_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace prismtest2.Migrations
 
             modelBuilder.Entity("prismtest2.Models.Entity.Users", b =>
                 {
-                    b.Property<decimal>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(20,0)");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<decimal>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
