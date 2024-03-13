@@ -23,7 +23,8 @@ namespace prismtest2.Models.Services
             {
                 id=p.Id,
                 User_name = p.Username,
-                Password = p.Password
+                Password = p.Password,
+                Email = p.Email
             }).ToList();
             return users;
         } 
