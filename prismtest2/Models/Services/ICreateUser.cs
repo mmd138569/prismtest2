@@ -13,7 +13,7 @@ namespace prismtest2.Models.Services
     public class UserListDTO
     {
         public UInt64 id;
-        public string Username;
+        public string User_name;
         public string Password;
         public string Email;
     }

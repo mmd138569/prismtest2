@@ -12,7 +12,7 @@ namespace prismtest2.Models.Context
     public class DataBaseContext:DbContext
     {
         public DataBaseContext(){  }
-        public DbSet<Users> Dbusers { get; set; }
+        public DbSet<Users> username { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.; Database=SampleProject; Integrated Security=True; Encrypt=False");
