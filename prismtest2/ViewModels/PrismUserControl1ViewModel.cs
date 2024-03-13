@@ -18,7 +18,7 @@ namespace prismtest2.ViewModels
         {
             _regionManager = regionManager;
             Login = new DelegateCommand(LoginClick);
-
+            //dont forger the create the new instance form your object if you dont you ll got the nullExeption Error
             add_User=new AddUser();
         }
         private string _username_txtbox;
