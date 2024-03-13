@@ -22,7 +22,6 @@ namespace prismtest2.ViewModels
             add_User=new AddUser();
         }
         private string _username_txtbox;
-
         public string username_txtbox
         {
             get { return _username_txtbox; }
@@ -36,7 +35,6 @@ namespace prismtest2.ViewModels
             }
         }
         private string _password_txtbox;
-
         public string password_txtbox
         {
             get { return _password_txtbox; }
@@ -50,7 +48,6 @@ namespace prismtest2.ViewModels
             }
         }
         private string _Email_txtbox;
-
         public string Email_txtbox
         {
             get { return _Email_txtbox; }
@@ -63,7 +60,6 @@ namespace prismtest2.ViewModels
                 }
             }
         }
-
         private void LoginClick()
         {
             Users users = new Users()
