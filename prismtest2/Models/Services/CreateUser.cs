@@ -19,10 +19,10 @@ namespace prismtest2.Models.Services
 
         public List<UserListDTO> userListDtos()
         {
-            var users = context.Dbusers.Select(p => new UserListDTO
+            var users = context.username.Select(p => new UserListDTO
             {
                 id=p.Id,
-                Username = p.Username,
+                User_name = p.Username,
                 Password = p.Password
             }).ToList();
             return users;
