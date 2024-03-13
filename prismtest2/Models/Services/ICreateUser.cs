@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace prismtest2.Models.Services
 {
-    internal interface ICreateUser
+    public interface ICreateUser
     {
+        List<UserListDTO> userListDtos();
+    }
+    public class UserListDTO
+    {
+        public UInt64 id;
+        public string Username;
+        public string Password;
+        public string Email;
     }
 }
