@@ -16,7 +16,4 @@
     </PackageReference>
     <PackageReference Include="Prism.DryIoc" Version="9.0.401-pre" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Services\" />
-  </ItemGroup>
 </Project>
