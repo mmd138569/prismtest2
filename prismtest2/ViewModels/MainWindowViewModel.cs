@@ -39,6 +39,7 @@ namespace prismtest2.ViewModels
             if (accessing == true && checking_username!=null&& cheking_pasword!=null)
             {
                 _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
+                errorvisibility = Visibility.Collapsed;
             }
             else
             {
