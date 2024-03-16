@@ -9,15 +9,17 @@
         <Path Data="{StaticResource circul}" Fill="White" HorizontalAlignment="Center" Margin="0,10,4,0"/>
 
 <StackPanel>
-            <StackPanel Margin="2,90,2,2" Visibility="Visible" >
+            <StackPanel Margin="2,70,2,2" Visibility="Visible" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="User Name:" Foreground="Bisque" Margin="12,20,2,2"></Label>
                     <TextBox Text="{Binding checking_username}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180"  Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Label Content="Pass Word:" Foreground="Bisque" Margin="12,20,6,2"></Label>
-                    <TextBox Text="{Binding cheking_pasword}"  Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" ></TextBox>
+                    <Label Content="Pass Word:" Foreground="Bisque" Margin="12,20,6,2"/>
+                        <TextBox Text="{Binding cheking_pasword}"  Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" ></TextBox>
+
                 </StackPanel>
+                <TextBlock Text="{Binding errortxtblock}" Foreground="Bisque" HorizontalAlignment="Center" Visibility="Visible" Style="{StaticResource ErorLabel}"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Margin="1,120,1,1">
                 <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Log in" Margin="2,2,2,20" Command="{Binding Login}">

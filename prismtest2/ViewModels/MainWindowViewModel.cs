@@ -35,12 +35,21 @@ namespace prismtest2.ViewModels
         private void LoginClick()
         {
             fillData(checking_username, cheking_pasword);
-            if (accessing == true)
+            if (accessing == true && checking_username!=null&& cheking_pasword!=null)
             {
                 _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
             }
+            else
+            {
+                errortxtblock = "THE USER IS NOT EXIST";
+            }
         }
-
+        private string _errortxtblock;
+        public string errortxtblock
+        {
+            get { return _errortxtblock; }
+            set { SetProperty(ref _errortxtblock, value); }
+        }
         public void OnClick()
         {
 
