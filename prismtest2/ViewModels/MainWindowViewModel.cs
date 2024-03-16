@@ -2,13 +2,19 @@
 using Prism.Mvvm;
 using Prism.Navigation.Regions;
 using System;
+using Microsoft.VisualBasic.ApplicationServices;
+using prismtest2.Models.Entity;
 using prismtest2.Models.Services;
+using System.Collections.ObjectModel;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace prismtest2.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        public static bool accessing = false;
         public CreateUser createuser;
+        ObservableCollection<Users> user_list = new ObservableCollection<Users>();
         private string _title = "Prism Application";
         public string Title
         {
@@ -22,7 +28,7 @@ namespace prismtest2.ViewModels
 
         public MainWindowViewModel(IRegionManager regionManager)
         {
-            _regionManager=regionManager;
+            _regionManager = regionManager;
             Signup = new DelegateCommand(OnClick);
             Login = new DelegateCommand(LoginClick);
             createuser = new CreateUser();
@@ -31,12 +37,18 @@ namespace prismtest2.ViewModels
 
         private void LoginClick()
         {
-            _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
+            fillData(checking_username, cheking_pasword);
+            if (accessing == true)
+            {
+                _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
+            }
         }
 
         public void OnClick()
         {
+
             _regionManager.RequestNavigate("ContentRegion", "PrismUserControl1");
+
         }
         private string _checking_username;
 
@@ -52,6 +64,28 @@ namespace prismtest2.ViewModels
                 }
             }
         }
+
+        public void fillData(string cheking_username, string cheking_password)
+        {
+            // employees = EmployeeDataAccess.employees;
+            user_list.Clear();
+            foreach (var customerlistDTO in createuser.userListDtos())
+            {
+                Users customer = new Users()
+                {
+                    Id = customerlistDTO.id,
+                    Username = customerlistDTO.User_name,
+                    Password = customerlistDTO.Password,
+                    Email = customerlistDTO.Email
+                };
+                if (customer.Password == cheking_password && customer.Username == cheking_username)
+                {
+                    accessing = true;
+                }
+                user_list.Add(customer);
+            }
+        }
+
         private string _cheking_pasword;
 
         public string cheking_pasword
