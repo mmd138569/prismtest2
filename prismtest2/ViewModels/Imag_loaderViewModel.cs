@@ -15,6 +15,7 @@ namespace prismtest2.ViewModels
 
         public Imag_loaderViewModel(IRegionManager regionManager)
         {
+            _regionManager = regionManager;
             folder_selection = new DelegateCommand(OnClick);
 
         }
