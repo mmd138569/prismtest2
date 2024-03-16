@@ -4,6 +4,7 @@ using Prism.Navigation.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Prism.Dialogs;
 using WINFORM = System.Windows.Forms;
 
 namespace prismtest2.ViewModels
@@ -22,9 +23,12 @@ namespace prismtest2.ViewModels
         public void OnClick()
         {
             WINFORM.FolderBrowserDialog dialog = new WINFORM.FolderBrowserDialog();
-
             dialog.InitialDirectory = "C:\\Users\\AFRACO\\Source\\Repos\\prismtest2\\prismtest2";
-            dialog.ShowDialog();
+            WINFORM.DialogResult result = dialog.ShowDialog();
+            if (result == WINFORM.DialogResult.OK)
+            {
+                string folder = dialog.SelectedPath;
+            }
         }
     }
 }
