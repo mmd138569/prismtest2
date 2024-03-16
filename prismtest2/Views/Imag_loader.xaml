@@ -6,7 +6,7 @@
     <Grid  Background="#31363F">
             <StackPanel>
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="810" Height="70" >
-                    <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding }" HorizontalAlignment="Left" Margin="10,10,1,1"/>
+                    <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding folder_selection}" HorizontalAlignment="Left" Margin="10,10,1,1"/>
             </StackPanel>
 
             </StackPanel>

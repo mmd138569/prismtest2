@@ -81,11 +81,6 @@ namespace prismtest2.ViewModels
             get { return _Resizer_Height; }
             set { SetProperty(ref _Resizer_Height, value); }
         }
-
-
-
-
-
         private string _checking_username;
 
         public string checking_username
