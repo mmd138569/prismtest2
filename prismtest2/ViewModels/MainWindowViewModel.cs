@@ -7,6 +7,7 @@ using prismtest2.Models.Entity;
 using prismtest2.Models.Services;
 using System.Collections.ObjectModel;
 using System.DirectoryServices.ActiveDirectory;
+using System.Windows;
 
 namespace prismtest2.ViewModels
 {
@@ -42,7 +43,14 @@ namespace prismtest2.ViewModels
             else
             {
                 errortxtblock = "THE USER IS NOT EXIST";
+                errorvisibility = Visibility.Visible;
             }
+        }
+        private Visibility _errorvisibility;
+        public Visibility errorvisibility
+        {
+            get { return _errorvisibility; }
+            set { SetProperty(ref _errorvisibility, value); }
         }
         private string _errortxtblock;
         public string errortxtblock
