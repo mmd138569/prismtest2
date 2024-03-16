@@ -21,7 +21,6 @@ namespace prismtest2.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-
         private IRegionManager _regionManager;
         public DelegateCommand Signup { get; set; }
         public DelegateCommand Login { get; set; }
@@ -33,8 +32,6 @@ namespace prismtest2.ViewModels
             Login = new DelegateCommand(LoginClick);
             createuser = new CreateUser();
         }
-
-
         private void LoginClick()
         {
             fillData(checking_username, cheking_pasword);
@@ -64,7 +61,6 @@ namespace prismtest2.ViewModels
                 }
             }
         }
-
         public void fillData(string cheking_username, string cheking_password)
         {
             // employees = EmployeeDataAccess.employees;
@@ -85,9 +81,7 @@ namespace prismtest2.ViewModels
                 user_list.Add(customer);
             }
         }
-
         private string _cheking_pasword;
-
         public string cheking_pasword
         {
             get { return _cheking_pasword; }
@@ -100,8 +94,5 @@ namespace prismtest2.ViewModels
                 }
             }
         }
-
-
-
     }
 }
