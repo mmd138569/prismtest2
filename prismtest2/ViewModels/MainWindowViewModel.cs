@@ -32,6 +32,8 @@ namespace prismtest2.ViewModels
             Signup = new DelegateCommand(OnClick);
             Login = new DelegateCommand(LoginClick);
             createuser = new CreateUser();
+            Resizer_Height = 500;
+            Resizer_width = 310;
         }
         private void LoginClick()
         {
@@ -40,6 +42,8 @@ namespace prismtest2.ViewModels
             {
                 _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
                 errorvisibility = Visibility.Collapsed;
+                Resizer_width = 810;
+                Resizer_Height = 500;
             }
             else
             {
@@ -65,6 +69,23 @@ namespace prismtest2.ViewModels
             _regionManager.RequestNavigate("ContentRegion", "PrismUserControl1");
 
         }
+        private int _Resizer_widthame;
+        public int Resizer_width
+        {
+            get { return _Resizer_widthame; }
+            set { SetProperty(ref _Resizer_widthame, value); }
+        }
+        private int _Resizer_Height;
+        public int Resizer_Height
+        {
+            get { return _Resizer_Height; }
+            set { SetProperty(ref _Resizer_Height, value); }
+        }
+
+
+
+
+
         private string _checking_username;
 
         public string checking_username
