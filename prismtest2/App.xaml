@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:prismtest2"
              xmlns:prism="http://prismlibrary.com/" >
     <Application.Resources>
-        <ResourceDictionary  Source="Style/style.xaml"/>
+            <ResourceDictionary  Source="Style/style.xaml"/>
     </Application.Resources>
 </prism:PrismApplication>

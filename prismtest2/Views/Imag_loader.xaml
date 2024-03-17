@@ -9,7 +9,7 @@
                 <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding folder_selection}" HorizontalAlignment="Left" Margin="10,10,1,1"/>
             </StackPanel>
                 <StackPanel>
-                    <DataGrid ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False">
+                    <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="10,10,1,1">
                         <DataGrid.Columns>
                         <DataGridTextColumn Header="Image Name" Binding="{Binding ImageName}" />
                             <!-- Add more columns for other properties if needed -->
