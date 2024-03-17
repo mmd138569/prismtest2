@@ -36,11 +36,16 @@ namespace prismtest2.ViewModels
                 //write this in the selected item
                 var imageFiles = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories);
 
-                image = new BitmapImage(new Uri(imageFiles[2]));
+                image = new BitmapImage(new Uri(imageFiles[myImages]));
 
             }
         }
-       
+        private int _myImages;
+        public int myImages
+        {
+            get { return _myImages; }
+            set { SetProperty(ref _myImages, value); }
+        }
         private ObservableCollection<My_Image> _imageCollection;
 
         public ObservableCollection<My_Image> ImageCollection
