@@ -20,4 +20,7 @@
     <PackageReference Include="Notification.Wpf" Version="8.0.0" />
     <PackageReference Include="Prism.DryIoc" Version="9.0.401-pre" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
 </Project>

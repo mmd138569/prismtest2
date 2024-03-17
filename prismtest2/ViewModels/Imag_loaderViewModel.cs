@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Prism.Dialogs;
 using WINFORM = System.Windows.Forms;
+using System.Collections.ObjectModel;
+using System.IO;
+using prismtest2.Models.Entity;
 
 namespace prismtest2.ViewModels
 {
@@ -19,6 +22,7 @@ namespace prismtest2.ViewModels
             _regionManager = regionManager;
             folder_selection = new DelegateCommand(OnClick);
 
+
         }
         public void OnClick()
         {
@@ -28,7 +32,40 @@ namespace prismtest2.ViewModels
             if (result == WINFORM.DialogResult.OK)
             {
                 string folder = dialog.SelectedPath;
+                ImageCollection = LoadImagesFromFolder(folder);
             }
         }
+        // ImageItem model
+       
+        private ObservableCollection<My_Image> _imageCollection;
+
+        public ObservableCollection<My_Image> ImageCollection
+        {
+            get => _imageCollection;
+            set => SetProperty(ref _imageCollection, value);
+        }
+
+
+        private ObservableCollection<My_Image> LoadImagesFromFolder(string folderPath)
+        {
+            var imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
+                .Where(file => IsImageFile(file))
+                .Select(file => new My_Image { ImagePath = file });
+
+            return new ObservableCollection<My_Image>(imageFiles);
+        }
+
+        private bool IsImageFile(string filePath)
+        {
+            var extension = Path.GetExtension(filePath).ToLower();
+            return extension == ".jpg" || extension == ".png" || extension == ".bmp";
+        }
+        // ViewModel
+       
+
     }
+
+    // add this to the MODEL it should not be here
+  
+
 }
