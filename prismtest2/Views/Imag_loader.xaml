@@ -10,19 +10,25 @@
                     <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding folder_selection}" HorizontalAlignment="Left" Margin="5,5,1,1"/>
                 </Border>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Left" Margin="6,3,1,1" Orientation="Horizontal">
-                <Border Background="#31363F" Height="390"  Width="782" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
-                    <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="4,10,0,10" Background="#31363F">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Image Name" Binding="{Binding ImageName}" />
-                            <!-- Add more columns for other properties if needed -->
-                        </DataGrid.Columns>
-                    </DataGrid>
-                   
-                </Border>
-                
-            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Margin="6,3,1,1" Orientation="Horizontal" Width="792">
+                <StackPanel Orientation="Horizontal">
 
+                    <Border Background="#31363F" Height="390"  Width="782" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="4,10,0,10" Background="#31363F">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Image Name" Binding="{Binding ImageName}" />
+                                    <!-- Add more columns for other properties if needed -->
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Image Name="ImageViewer1" Height="400" Width="400" />
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
+
     </Grid>
 </UserControl>
