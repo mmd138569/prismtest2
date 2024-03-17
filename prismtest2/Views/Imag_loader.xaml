@@ -8,8 +8,8 @@
                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="810" Height="70" >
                 <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding folder_selection}" HorizontalAlignment="Left" Margin="10,10,1,1"/>
             </StackPanel>
-                <StackPanel>
-                    <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="10,10,1,1">
+                <StackPanel Height="400" Width="200" HorizontalAlignment="Left" Margin="6,1,1,1">
+                    <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="4,10,1,1">
                         <DataGrid.Columns>
                         <DataGridTextColumn Header="Image Name" Binding="{Binding ImageName}" />
                             <!-- Add more columns for other properties if needed -->
