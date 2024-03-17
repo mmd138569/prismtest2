@@ -15,14 +15,14 @@
 
                     <Border Background="#31363F" Height="390"  Width="782" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
                         <StackPanel Orientation="Horizontal">
-                            <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="4,10,0,10" Background="#31363F">
+                            <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="4,10,0,10" Background="#31363F" SelectedItem="{Binding myImages}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Image Name" Binding="{Binding ImageName}" />
+                                    <DataGridTextColumn Header="Image Name" Binding="{Binding ImageName}"/>
                                     <!-- Add more columns for other properties if needed -->
                                 </DataGrid.Columns>
                             </DataGrid>
 
-                            <Image Name="ImageViewer1" Height="360" Width="600" Margin="10,10,1,10"/>
+                            <Image Name="ImageViewer1" Height="360" Width="600" Margin="10,10,1,10" Source="{Binding image}"/>
                         </StackPanel>
                     </Border>
 

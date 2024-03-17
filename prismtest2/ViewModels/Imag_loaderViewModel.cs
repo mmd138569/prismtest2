@@ -7,8 +7,11 @@ using System.Linq;
 using Prism.Dialogs;
 using WINFORM = System.Windows.Forms;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.IO;
+using System.Windows.Media;
 using prismtest2.Models.Entity;
+using System.Windows.Media.Imaging;
 
 namespace prismtest2.ViewModels
 {
@@ -30,6 +33,11 @@ namespace prismtest2.ViewModels
             {
                 string folder = dialog.SelectedPath;
                 ImageCollection = LoadImagesFromFolder(folder);
+                //write this in the selected item
+                var imageFiles = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories);
+
+                image = new BitmapImage(new Uri(imageFiles[2]));
+
             }
         }
        
@@ -40,17 +48,22 @@ namespace prismtest2.ViewModels
             get => _imageCollection;
             set => SetProperty(ref _imageCollection, value);
         }
-
+        private ImageSource _image;
+        public ImageSource image
+        {
+            get { return _image; }
+            set { SetProperty(ref _image, value); }
+        }
 
         private ObservableCollection<My_Image> LoadImagesFromFolder(string folderPath)
         {
             var imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
                 .Where(file => IsImageFile(file))
                 .Select(file => new My_Image { ImagePath = file });
-
+           // var image = imageFiles;
             return new ObservableCollection<My_Image>(imageFiles);
         }
-
+        
         private bool IsImageFile(string filePath)
         {
             var extension = Path.GetExtension(filePath).ToLower();
