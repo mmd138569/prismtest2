@@ -87,7 +87,7 @@
     <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}" >
         <Border Background="{TemplateBinding Background}"
                 x:Name="Bd" BorderBrush="Bisque"
-                BorderThickness="2" CornerRadius="2">
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2">
             <ScrollViewer x:Name="PART_ContentHost"/>
         </Border>
         <ControlTemplate.Triggers>
@@ -156,7 +156,7 @@
     <Style x:Key="DataGridColumnHeaderStyle1" TargetType="{x:Type DataGridColumnHeader}" >
         <Setter Property="Background" Value="#31363F"/>
 
-
+        
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
