@@ -16,13 +16,10 @@ namespace prismtest2.ViewModels
     {
         public DelegateCommand folder_selection { get; set; }
         private IRegionManager _regionManager;
-
         public Imag_loaderViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
             folder_selection = new DelegateCommand(OnClick);
-
-
         }
         public void OnClick()
         {
@@ -35,7 +32,6 @@ namespace prismtest2.ViewModels
                 ImageCollection = LoadImagesFromFolder(folder);
             }
         }
-        // ImageItem model
        
         private ObservableCollection<My_Image> _imageCollection;
 
@@ -60,12 +56,5 @@ namespace prismtest2.ViewModels
             var extension = Path.GetExtension(filePath).ToLower();
             return extension == ".jpg" || extension == ".png" || extension == ".bmp";
         }
-        // ViewModel
-       
-
     }
-
-    // add this to the MODEL it should not be here
-  
-
 }
