@@ -156,7 +156,7 @@
     <Style x:Key="DataGridColumnHeaderStyle1" TargetType="{x:Type DataGridColumnHeader}" >
         <Setter Property="Background" Value="#31363F"/>
         <Setter Property="Foreground" Value="Bisque"/>
-
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -198,6 +198,7 @@
     <Style TargetType="{x:Type DataGrid}">
         <Setter Property="RowBackground" Value="#31363F"/>
         <Setter Property="Foreground" Value="Bisque"/>
+        <Setter Property="Padding" Value="5"/>
 
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
 
