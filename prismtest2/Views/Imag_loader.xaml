@@ -22,7 +22,7 @@
                                 </DataGrid.Columns>
                             </DataGrid>
 
-                            <Image Name="ImageViewer1" Height="400" Width="400" />
+                            <Image Name="ImageViewer1" Height="360" Width="600" Margin="10,10,1,10"/>
                         </StackPanel>
                     </Border>
 
