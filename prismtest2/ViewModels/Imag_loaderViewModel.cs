@@ -12,6 +12,11 @@ using System.IO;
 using System.Windows.Media;
 using prismtest2.Models.Entity;
 using System.Windows.Media.Imaging;
+using Microsoft.VisualBasic.Logging;
+using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
+using System.Text.RegularExpressions;
 
 namespace prismtest2.ViewModels
 {
@@ -23,6 +28,38 @@ namespace prismtest2.ViewModels
         {
             _regionManager = regionManager;
             folder_selection = new DelegateCommand(OnClick);
+            sharpening = new DelegateCommand(sharpeninginClick);
+
+        }
+        public DelegateCommand sharpening { get; set; }
+        public void sharpeninginClick()
+        {
+            //Image<Bgr, byte> image1 = new Image<Bgr, byte>(image);
+            //Image<Gray, byte> grayImage = image1.Convert<Gray, byte>();
+
+            Image<Gray, byte> inputImage = new Image<Gray, byte>(image);
+            Sharpen(inputImage, 600, 360, 1, 0, 1);
+
+        }
+        public static Image<Gray, byte> Sharpen(Image<Gray, byte> image, int w, int h, double sigma1, double sigma2, int k)
+        {
+            // Ensure odd window sizes
+            w = (w % 2 == 0) ? w - 1 : w;
+            h = (h % 2 == 0) ? h - 1 : h;
+
+            // Apply Gaussian smoothing
+            var gaussianSmooth = image.SmoothGaussian(w, h, sigma1, sigma2);
+
+            // Create the mask by subtracting the smoothed image from the original
+            var mask = image - gaussianSmooth;
+
+            // Multiply the mask by the weighted value 'k'
+            mask *= k;
+
+            // Add the mask back to the original image
+            image += mask;
+
+            return image;
         }
 
         public void OnClick()
@@ -87,6 +124,12 @@ namespace prismtest2.ViewModels
         {
             var extension = Path.GetExtension(filePath).ToLower();
             return extension == ".jpg" || extension == ".png" || extension == ".bmp";
+        }
+        private string fieldName;
+        public string PropertyName
+        {
+            get { return fieldName; }
+            set { SetProperty(ref fieldName, value); }
         }
     }
 }

@@ -13,7 +13,7 @@
             <StackPanel HorizontalAlignment="Left" Margin="6,3,1,1" Orientation="Horizontal" Width="792">
                 <StackPanel Orientation="Horizontal">
 
-                    <Border Background="#31363F" Height="390"  Width="782" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
+                    <Border Background="#31363F" Height="350"  Width="782" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
                         <StackPanel Orientation="Horizontal">
                             <DataGrid RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ItemsSource="{Binding ImageCollection}" AutoGenerateColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Margin="4,10,0,10" Background="#31363F" SelectedItem="{Binding myImages}">
                                 <DataGrid.Columns>
@@ -25,9 +25,21 @@
                             <Image Name="ImageViewer1" Height="360" Width="600" Margin="10,10,1,10" Source="{Binding image}"/>
                         </StackPanel>
                     </Border>
-
+                   
                 </StackPanel>
             </StackPanel>
+            <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Sharpening" Margin="2,2,2,20" Command="{Binding sharpening}">
+                <Button.Style >
+                    <Style TargetType="Button" >
+                        <Setter Property="Background" Value="#0C2D57"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#0C2D57"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
 
     </Grid>
