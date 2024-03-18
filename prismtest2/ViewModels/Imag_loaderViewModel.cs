@@ -24,6 +24,7 @@ namespace prismtest2.ViewModels
             _regionManager = regionManager;
             folder_selection = new DelegateCommand(OnClick);
         }
+
         public void OnClick()
         {
             WINFORM.FolderBrowserDialog dialog = new WINFORM.FolderBrowserDialog();
