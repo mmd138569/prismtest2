@@ -38,7 +38,7 @@ namespace prismtest2.ViewModels
             //Image<Gray, byte> grayImage = image1.Convert<Gray, byte>();
 
             Image<Gray, byte> inputImage = new Image<Gray, byte>(image);
-            Sharpen(inputImage, 600, 360, 0, 1, 2);
+            Image<Gray, byte> sharpenedImage=Sharpen(inputImage, 600, 360, .15, 1.5, 2);
 
         }
         public static Image<Gray, byte> Sharpen(Image<Gray, byte> image, int w, int h, double sigma1, double sigma2, int k)
@@ -104,13 +104,6 @@ namespace prismtest2.ViewModels
             get => _imageCollection;
             set => SetProperty(ref _imageCollection, value);
         }
-       /* private ImageSource _image;
-        public ImageSource image
-        {
-            get { return _image; }
-            set { SetProperty(ref _image, value); }
-        }
-       */
         private ObservableCollection<My_Image> LoadImagesFromFolder(string folderPath)
         {
             var imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
