@@ -39,7 +39,12 @@ namespace prismtest2.ViewModels
 
             Image<Gray, byte> inputImage = new Image<Gray, byte>(image);
             Image<Gray, byte> sharpenedImage=Sharpen(inputImage, 600, 360, .15, 1.5, 2);
-
+           
+                sharpenedImage.Save(image);
+                // Your code to save the image here
+                // For example:
+                // sharpenedImage.Save("output_image.jpg");
+           
         }
         public static Image<Gray, byte> Sharpen(Image<Gray, byte> image, int w, int h, double sigma1, double sigma2, int k)
         {
