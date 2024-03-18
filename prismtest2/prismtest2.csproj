@@ -6,6 +6,7 @@
     <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Emgu.CV" Version="4.8.1.5350" />
     <PackageReference Include="MaterialDesignColors" Version="3.1.0-ci571" />
     <PackageReference Include="MaterialDesignThemes" Version="5.0.1-ci571" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.2.24128.4">
