@@ -36,16 +36,29 @@ namespace prismtest2.ViewModels
                 //write this in the selected item
                 var imageFiles = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories);
 
-                image = new BitmapImage(new Uri(imageFiles[myImages]));
 
             }
         }
-        private int _myImages;
-        public int myImages
+        private My_Image _myImages;
+        public My_Image myImages
         {
             get { return _myImages; }
-            set { SetProperty(ref _myImages, value); }
+            set
+            {
+                if (SetProperty(ref _myImages, value))
+                {
+                    // Update the selected document's image
+                    image = _myImages?.ImagePath; // Replace with your logic
+                }
+            }
         }
+        private string _image;
+        public string image
+        {
+            get => _image;
+            set => SetProperty(ref _image, value);
+        }
+
         private ObservableCollection<My_Image> _imageCollection;
 
         public ObservableCollection<My_Image> ImageCollection
@@ -53,13 +66,13 @@ namespace prismtest2.ViewModels
             get => _imageCollection;
             set => SetProperty(ref _imageCollection, value);
         }
-        private ImageSource _image;
+       /* private ImageSource _image;
         public ImageSource image
         {
             get { return _image; }
             set { SetProperty(ref _image, value); }
         }
-
+       */
         private ObservableCollection<My_Image> LoadImagesFromFolder(string folderPath)
         {
             var imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
