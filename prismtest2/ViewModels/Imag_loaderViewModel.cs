@@ -38,7 +38,7 @@ namespace prismtest2.ViewModels
             //Image<Gray, byte> grayImage = image1.Convert<Gray, byte>();
 
             Image<Gray, byte> inputImage = new Image<Gray, byte>(image);
-            Sharpen(inputImage, 600, 360, 0, 1, 1);
+            Sharpen(inputImage, 600, 360, 0, 1, 2);
 
         }
         public static Image<Gray, byte> Sharpen(Image<Gray, byte> image, int w, int h, double sigma1, double sigma2, int k)
