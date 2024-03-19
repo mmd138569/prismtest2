@@ -37,7 +37,7 @@ namespace prismtest2.ViewModels
             //Image<Bgr, byte> image1 = new Image<Bgr, byte>(image);
             //Image<Gray, byte> grayImage = image1.Convert<Gray, byte>();
             Image<Gray, byte> inputImage = new Image<Gray, byte>(image);
-            Image<Gray, byte> sharpenedImage=Sharpen(inputImage, 600, 360, 1.5, 1.5, 2);
+            Image<Gray, byte> sharpenedImage=Sharpen(inputImage, 601, 321, 1.5, 1.5, 2);
            
                 CvInvoke.Imshow("sharpenedImage",inputImage);
                 // Your code to save the image here
