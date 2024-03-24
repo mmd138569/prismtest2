@@ -34,9 +34,9 @@ namespace prismtest2.ViewModels
             folder_selection = new DelegateCommand(OnClick);
             Conterast = new DelegateCommand(ContrastClick);
             sharpening = new DelegateCommand(sharpeninginClick);
-            Brightness=new DelegateCommand(BrightnessClick);
+            Brightness = new DelegateCommand(BrightnessClick);
             HistogramPage = new DelegateCommand(OnHistogramClick);
-           
+
         }
         public DelegateCommand HistogramPage { set; get; }
         public void OnHistogramClick()
@@ -44,7 +44,7 @@ namespace prismtest2.ViewModels
             if (image != null)
             {
                 Image<Gray, byte> inputImages = new Image<Gray, byte>(image);
-              listofinputs = new ObservableCollection<Gray>();
+                listofinputs = new ObservableCollection<Gray>();
                 for (int y = 0; y < inputImages.Height; y++)
                 {
 
@@ -68,36 +68,42 @@ namespace prismtest2.ViewModels
         {
             //Image<Bgr, byte> image1 = new Image<Bgr, byte>(image);
             //Image<Gray, byte> grayImage = image1.Convert<Gray, byte>();
-            Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
-            Image<Bgr, byte> sharpenedImage=Sharpen(inputImage, 601, 321, 1.5, 1.5, 2);
-           
+            if (image != null)
+            {
+                Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
+                Image<Bgr, byte> sharpenedImage = Sharpen(inputImage, 601, 321, 1.5, 1.5, 2);
+
                 CvInvoke.Imshow("sharpenedImage", sharpenedImage);
-            // Your code to save the image here
-            // For example:
-            // sharpenedImage.Save("output_image.jpg");
-       
+                // Your code to save the image here
+                // For example:
+                // sharpenedImage.Save("output_image.jpg");
+            }
 
         }
         public DelegateCommand Conterast { set; get; }
         public void ContrastClick()
         {
-            Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
-            inputImage._EqualizeHist();
-            inputImage._GammaCorrect(6d);
-            CvInvoke.Imshow("sharpenedImage", inputImage);
-
+            if (image != null)
+            {
+                Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
+                inputImage._EqualizeHist();
+                inputImage._GammaCorrect(6d);
+                CvInvoke.Imshow("sharpenedImage", inputImage);
+            }
         }
         public DelegateCommand Brightness { set; get; }
 
         public void BrightnessClick()
         {
-            Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
+            if (image != null)
+            {
+                Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
 
 
-            double brightnessFactor = 150;
+                double brightnessFactor = 150;
                 inputImage._Mul(1 + brightnessFactor / 255.0);
                 CvInvoke.Imshow("sharpenedImage", inputImage);
-                
+            }
         }
         public static Image<Bgr, byte> Sharpen(Image<Bgr, byte> image, int w, int h, double sigma1, double sigma2, int k)
         {
@@ -167,10 +173,10 @@ namespace prismtest2.ViewModels
             var imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
                 .Where(file => IsImageFile(file))
                 .Select(file => new My_Image { ImagePath = file });
-           // var image = imageFiles;
+            // var image = imageFiles;
             return new ObservableCollection<My_Image>(imageFiles);
         }
-        
+
         private bool IsImageFile(string filePath)
         {
             var extension = Path.GetExtension(filePath).ToLower();
