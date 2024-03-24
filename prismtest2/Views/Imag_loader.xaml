@@ -54,6 +54,19 @@
                         </Style>
                     </Button.Style>
                 </Button>
+
+                <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Brightness" Margin="50,20,2,20" Command="{Binding Brightness}">
+                    <Button.Style >
+                        <Style TargetType="Button" >
+                            <Setter Property="Background" Value="#0C2D57"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#0C2D57"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </StackPanel>
         </StackPanel>
 

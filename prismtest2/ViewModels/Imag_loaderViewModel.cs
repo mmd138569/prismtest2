@@ -30,7 +30,7 @@ namespace prismtest2.ViewModels
             folder_selection = new DelegateCommand(OnClick);
             Conterast = new DelegateCommand(ContrastClick);
             sharpening = new DelegateCommand(sharpeninginClick);
-
+            Brightness=new DelegateCommand(BrightnessClick);
         }
         public DelegateCommand sharpening { get; set; }
         public void sharpeninginClick()
@@ -55,7 +55,16 @@ namespace prismtest2.ViewModels
             CvInvoke.Imshow("sharpenedImage", inputImage);
 
         }
+        public DelegateCommand Brightness { set; get; }
 
+        public void BrightnessClick()
+        {
+            Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
+            double brightnessFactor = 150;
+            inputImage._Mul ( 1 + brightnessFactor / 255.0);
+            CvInvoke.Imshow("sharpenedImage", inputImage);
+
+        }
         public static Image<Bgr, byte> Sharpen(Image<Bgr, byte> image, int w, int h, double sigma1, double sigma2, int k)
         {
             // Ensure odd window sizes
