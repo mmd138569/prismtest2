@@ -9,7 +9,7 @@
 
                 <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Top"  Height="70" Orientation="Horizontal">
                     <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding folder_selection}" HorizontalAlignment="Left" Margin="5,1,1,5"/>
-                    <Button Template="{DynamicResource round}"  Width="113" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="IMAGE HISTOGRAM"  Command="{Binding }" HorizontalAlignment="Left" Margin="7,1,1,5"/>
+                    <Button Template="{DynamicResource round}"  Width="113" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="IMAGE HISTOGRAM"  Command="{Binding HistogramPage}" HorizontalAlignment="Left" Margin="7,1,1,5"/>
 
                 </StackPanel>
             </Border>

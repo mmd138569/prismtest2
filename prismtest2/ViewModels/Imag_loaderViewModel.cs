@@ -7,6 +7,7 @@ using System.Linq;
 using Prism.Dialogs;
 using WINFORM = System.Windows.Forms;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Media;
@@ -31,6 +32,13 @@ namespace prismtest2.ViewModels
             Conterast = new DelegateCommand(ContrastClick);
             sharpening = new DelegateCommand(sharpeninginClick);
             Brightness=new DelegateCommand(BrightnessClick);
+            HistogramPage = new DelegateCommand(OnHistogramClick);
+        }
+        public DelegateCommand HistogramPage { set; get; }
+        public void OnHistogramClick()
+        {
+            _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2");
+
         }
         public DelegateCommand sharpening { get; set; }
         public void sharpeninginClick()

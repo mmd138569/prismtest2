@@ -18,6 +18,7 @@ namespace prismtest2
         {
             containerRegistry.RegisterForNavigation<PrismUserControl1>();
             containerRegistry.RegisterForNavigation<Imag_loader>();
+            containerRegistry.RegisterForNavigation<PrismUserControl2>();
         }
     }
 }
