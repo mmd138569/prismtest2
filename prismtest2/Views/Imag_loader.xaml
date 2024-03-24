@@ -5,11 +5,15 @@
              prism:ViewModelLocator.AutoWireViewModel="True" MaxHeight="510" MinWidth="810" MinHeight="510" MaxWidth="810">
     <Grid  Background="#31363F">
         <StackPanel >
-            <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Top"  Height="70" >
-                <Border Background="#31363F" Height="66"  Width="782" Margin="6,4,0,0" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
-                    <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding folder_selection}" HorizontalAlignment="Left" Margin="5,1,1,1"/>
-                </Border>
-            </StackPanel>
+            <Border Background="#31363F" Height="66"  Width="782" Margin="6,4,19,0" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
+
+                <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Top"  Height="70" Orientation="Horizontal">
+                    <Button Template="{DynamicResource round}"  Width="100" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="SELECT FOLDER"  Command="{Binding folder_selection}" HorizontalAlignment="Left" Margin="5,1,1,5"/>
+                    <Button Template="{DynamicResource round}"  Width="113" Height="50" Foreground="Bisque" BorderBrush="AntiqueWhite" Background="#31363F" Content="IMAGE HISTOGRAM"  Command="{Binding }" HorizontalAlignment="Left" Margin="7,1,1,5"/>
+
+                </StackPanel>
+            </Border>
+
             <StackPanel HorizontalAlignment="Left" Margin="6,3,1,1" Orientation="Horizontal" Width="792">
                 <StackPanel Orientation="Horizontal">
 
@@ -28,46 +32,49 @@
 
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Sharpening" Margin="2,20,50,20" Command="{Binding sharpening}">
-                    <Button.Style >
-                        <Style TargetType="Button" >
-                            <Setter Property="Background" Value="#0C2D57"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#0C2D57"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+            <Border Background="#31363F" Height="73"  Width="783" Margin="6,4,20,0" BorderBrush="Bisque" CornerRadius="3" BorderThickness="1">
 
-                <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Contrast" Margin="2,20,2,20" Command="{Binding Conterast}">
-                    <Button.Style >
-                        <Style TargetType="Button" >
-                            <Setter Property="Background" Value="#0C2D57"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#0C2D57"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Sharpening" Margin="2,10,50,20" Command="{Binding sharpening}">
+                        <Button.Style >
+                            <Style TargetType="Button" >
+                                <Setter Property="Background" Value="#0C2D57"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#0C2D57"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
 
-                <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Brightness" Margin="50,20,2,20" Command="{Binding Brightness}">
-                    <Button.Style >
-                        <Style TargetType="Button" >
-                            <Setter Property="Background" Value="#0C2D57"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#0C2D57"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-            </StackPanel>
+                    <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Contrast" Margin="2,10,2,20" Command="{Binding Conterast}">
+                        <Button.Style >
+                            <Style TargetType="Button" >
+                                <Setter Property="Background" Value="#0C2D57"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#0C2D57"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <Button Template="{DynamicResource round}" BorderBrush="Bisque"  Width="100" Height="40" Foreground="Bisque" Background="#31363F" Content="Brightness" Margin="50,10,2,20" Command="{Binding Brightness}">
+                        <Button.Style >
+                            <Style TargetType="Button" >
+                                <Setter Property="Background" Value="#0C2D57"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#0C2D57"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Border>
         </StackPanel>
 
     </Grid>
