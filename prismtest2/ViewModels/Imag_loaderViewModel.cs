@@ -27,6 +27,7 @@ namespace prismtest2.ViewModels
         public Gray pixelValue;
         public DelegateCommand folder_selection { get; set; }
         private IRegionManager _regionManager;
+        public ObservableCollection<Gray> listofinputs;
         public Imag_loaderViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
@@ -43,7 +44,7 @@ namespace prismtest2.ViewModels
             if (image != null)
             {
                 Image<Gray, byte> inputImages = new Image<Gray, byte>(image);
-                ObservableCollection<Gray> listofinputs = new ObservableCollection<Gray>();
+              listofinputs = new ObservableCollection<Gray>();
                 for (int y = 0; y < inputImages.Height; y++)
                 {
 
@@ -56,6 +57,8 @@ namespace prismtest2.ViewModels
                         listofinputs.Add(pixelValue);
                     }
                 }
+
+                PrismUserControl2ViewModel prismUser = new PrismUserControl2ViewModel(listofinputs);
             }
             _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2");
 
