@@ -28,6 +28,7 @@ namespace prismtest2.ViewModels
         {
             _regionManager = regionManager;
             folder_selection = new DelegateCommand(OnClick);
+            Conterast = new DelegateCommand(ContrastClick);
             sharpening = new DelegateCommand(sharpeninginClick);
 
         }
@@ -45,6 +46,16 @@ namespace prismtest2.ViewModels
                 // sharpenedImage.Save("output_image.jpg");
            
         }
+        public DelegateCommand Conterast { set; get; }
+        public void ContrastClick()
+        {
+            Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
+            inputImage._EqualizeHist();
+            inputImage._GammaCorrect(6d);
+            CvInvoke.Imshow("sharpenedImage", inputImage);
+
+        }
+
         public static Image<Bgr, byte> Sharpen(Image<Bgr, byte> image, int w, int h, double sigma1, double sigma2, int k)
         {
             // Ensure odd window sizes
