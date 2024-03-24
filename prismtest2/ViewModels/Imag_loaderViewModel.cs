@@ -18,11 +18,13 @@ using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace prismtest2.ViewModels
 {
     public class Imag_loaderViewModel : BindableBase
     {
+        public Gray pixelValue;
         public DelegateCommand folder_selection { get; set; }
         private IRegionManager _regionManager;
         public Imag_loaderViewModel(IRegionManager regionManager)
@@ -33,10 +35,28 @@ namespace prismtest2.ViewModels
             sharpening = new DelegateCommand(sharpeninginClick);
             Brightness=new DelegateCommand(BrightnessClick);
             HistogramPage = new DelegateCommand(OnHistogramClick);
+           
         }
         public DelegateCommand HistogramPage { set; get; }
         public void OnHistogramClick()
         {
+            if (image != null)
+            {
+                Image<Gray, byte> inputImages = new Image<Gray, byte>(image);
+                ObservableCollection<Gray> listofinputs = new ObservableCollection<Gray>();
+                for (int y = 0; y < inputImages.Height; y++)
+                {
+
+                    for (int x = 0; x < inputImages.Width; x++)
+                    {
+                        pixelValue = inputImages[y, x]; // Access the pixel value
+                        // Perform further analysis or computations based on the pixel value
+                        //Trace.WriteLine("=====================================");
+                        //Trace.WriteLine(pixelValue);
+                        listofinputs.Add(pixelValue);
+                    }
+                }
+            }
             _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2");
 
         }
@@ -49,10 +69,11 @@ namespace prismtest2.ViewModels
             Image<Bgr, byte> sharpenedImage=Sharpen(inputImage, 601, 321, 1.5, 1.5, 2);
            
                 CvInvoke.Imshow("sharpenedImage", sharpenedImage);
-                // Your code to save the image here
-                // For example:
-                // sharpenedImage.Save("output_image.jpg");
-           
+            // Your code to save the image here
+            // For example:
+            // sharpenedImage.Save("output_image.jpg");
+       
+
         }
         public DelegateCommand Conterast { set; get; }
         public void ContrastClick()
@@ -68,10 +89,12 @@ namespace prismtest2.ViewModels
         public void BrightnessClick()
         {
             Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
-            double brightnessFactor = 150;
-            inputImage._Mul ( 1 + brightnessFactor / 255.0);
-            CvInvoke.Imshow("sharpenedImage", inputImage);
 
+
+            double brightnessFactor = 150;
+                inputImage._Mul(1 + brightnessFactor / 255.0);
+                CvInvoke.Imshow("sharpenedImage", inputImage);
+                
         }
         public static Image<Bgr, byte> Sharpen(Image<Bgr, byte> image, int w, int h, double sigma1, double sigma2, int k)
         {
