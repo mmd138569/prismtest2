@@ -36,16 +36,16 @@ namespace prismtest2.ViewModels
         {
             //Image<Bgr, byte> image1 = new Image<Bgr, byte>(image);
             //Image<Gray, byte> grayImage = image1.Convert<Gray, byte>();
-            Image<Gray, byte> inputImage = new Image<Gray, byte>(image);
-            Image<Gray, byte> sharpenedImage=Sharpen(inputImage, 601, 321, 1.5, 1.5, 2);
+            Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
+            Image<Bgr, byte> sharpenedImage=Sharpen(inputImage, 601, 321, 1.5, 1.5, 2);
            
-                CvInvoke.Imshow("sharpenedImage",inputImage);
+                CvInvoke.Imshow("sharpenedImage", sharpenedImage);
                 // Your code to save the image here
                 // For example:
                 // sharpenedImage.Save("output_image.jpg");
            
         }
-        public static Image<Gray, byte> Sharpen(Image<Gray, byte> image, int w, int h, double sigma1, double sigma2, int k)
+        public static Image<Bgr, byte> Sharpen(Image<Bgr, byte> image, int w, int h, double sigma1, double sigma2, int k)
         {
             // Ensure odd window sizes
             w = (w % 2 == 0) ? w - 1 : w;
