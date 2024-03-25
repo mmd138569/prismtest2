@@ -6,8 +6,8 @@
              prism:ViewModelLocator.AutoWireViewModel="True"   MaxHeight="510" MinWidth="810" MinHeight="510" MaxWidth="810" >
     <UserControl.Resources>
         <DataTemplate x:Key="HistogramChartToolTipTemplate">
-            <Border Padding="10" Background="#C84B4E52" BorderBrush="Black" BorderThickness="1">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"
+            <Border Padding="10" Background="Bisque" BorderBrush="Black" BorderThickness="1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Bisque"
                            TextWrapping="Wrap" MaxWidth="150">
                     <Run Text="{Binding VerticalHigh}"/>
                     <Run Text="arrivals in the hours between" />
@@ -21,20 +21,29 @@
     <Grid Background="#31363F">
         <telerik:ChartHistogramSource x:Name="chartHistogramSource"
                                       ItemsSource="{Binding ArrivalsPerHour}"
-                                      Interval="3" Grid.ColumnSpan="2"/>
+                                      Interval="3" Grid.ColumnSpan="2" />
 
-        <TextBlock Text="Arrivals in the last 24 hours" TextAlignment="Center" FontSize="16" Foreground="{DynamicResource QSFTheme_ExampleAccentBrush}" Grid.ColumnSpan="2"/>
-
-        <telerik:RadCartesianChart Palette="Windows11" Margin="0,44,0,0">
+        <TextBlock Text="Abundance of the color"  TextAlignment="Center" FontSize="16" Foreground= "Bisque" Grid.ColumnSpan="2"/>
+    
+        <telerik:RadCartesianChart Palette="Windows11" Margin="0,44,0,0" Foreground="Bisque">
             <telerik:RadCartesianChart.VerticalAxis>
                 <telerik:LinearAxis Title="Number of arrivals"/>
             </telerik:RadCartesianChart.VerticalAxis>
+
             <telerik:RadCartesianChart.HorizontalAxis>
+               
                 <telerik:LinearAxis MajorStep="{Binding ElementName=chartHistogramSource, Path=ActualInterval}"
                                     Maximum="24"/>
             </telerik:RadCartesianChart.HorizontalAxis>
             <telerik:RadCartesianChart.Grid>
-                <telerik:CartesianChartGrid MajorLinesVisibility="Y" />
+                <telerik:CartesianChartGrid MajorLinesVisibility="Y">
+                   
+                    <telerik:CartesianChartGrid.MajorYLineStyle>
+                        <Style TargetType="Line">
+                            <Setter Property="Stroke" Value="Bisque"/>
+                        </Style>
+                    </telerik:CartesianChartGrid.MajorYLineStyle>
+                </telerik:CartesianChartGrid>
             </telerik:RadCartesianChart.Grid>
             <telerik:RadCartesianChart.Behaviors>
                 <telerik:ChartTooltipBehavior />
