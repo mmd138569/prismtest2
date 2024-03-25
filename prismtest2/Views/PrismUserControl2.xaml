@@ -33,7 +33,7 @@
             <telerik:RadCartesianChart.HorizontalAxis>
                
                 <telerik:LinearAxis MajorStep="{Binding ElementName=chartHistogramSource, Path=ActualInterval}"
-                                    Maximum="24"/>
+                                    Maximum="250"/>
             </telerik:RadCartesianChart.HorizontalAxis>
             <telerik:RadCartesianChart.Grid>
                 <telerik:CartesianChartGrid MajorLinesVisibility="Y">

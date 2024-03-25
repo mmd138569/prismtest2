@@ -27,12 +27,7 @@ namespace prismtest2.ViewModels
         private static Random rnd = new Random(1234567890);
 
         public ObservableCollection<double> ArrivalsPerHour { get; set; }
-        public ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo> ArrivalsPerHourAlternative
-        {
-            get;
-            set;
-        }
-
+        public ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo> ArrivalsPerHourAlternative { get; set; }
         public ObservableCollection<double> Ticks { get; set; }
 
 
@@ -57,17 +52,17 @@ namespace prismtest2.ViewModels
             }
 
             ArrivalsPerHourAlternative = new ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo>();
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(0, 4, 0, 3));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(4, 5, 0, 8));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(5, 6, 0, 2));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(6, 7, 0, 7));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(7, 11, 0, 3));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(11, 15, 0, 2));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(15, 20, 0, 5));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(20, 21, 0, 1));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(21, 22, 0, 4));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(22, 23, 0, 6));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(23, 24, 0, 10));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(0, 25, 0, 300000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(25, 50, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(50, 70, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(70, 90, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(90, 120, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(120, 150, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(150, 200, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(200, 220, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(220, 230, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(230, 240, 0, 2000000));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(0, 250, 0, 2000000));
 
             Ticks = new ObservableCollection<double>();
             Ticks.Add(ArrivalsPerHourAlternative[0].HorizontalLow);
@@ -88,6 +83,8 @@ namespace prismtest2.ViewModels
             {
                 this.VerticalLow = verticalLow;
                 this.VerticalHigh = verticalHigh;
+                this.HorizontalLow = horizontalLow;
+                this.HorizontalHigh = horizontalHigh;
             }
         }
     }
