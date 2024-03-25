@@ -37,10 +37,11 @@ namespace prismtest2.ViewModels
 
         public PrismUserControl2ViewModel(ObservableCollection<Gray> listofinputs)
         {
-            //Trace.WriteLine(listofinputs);
-           ArrivalsPerHour = new ObservableCollection<double>();
-           //Convert.ToDouble(listofinputs.ToString());
-             for (int hour = 0; hour <= 255; hour++)
+
+            Trace.WriteLine(listofinputs);
+            ArrivalsPerHour = new ObservableCollection<double>();
+
+            for (int hour = 0; hour <= 255; hour++)
             {
                 int itemsCount = rnd.Next(1, 5);
                 if (hour >= 8 && hour < 16)
@@ -55,13 +56,13 @@ namespace prismtest2.ViewModels
             }
 
             ArrivalsPerHourAlternative = new ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo>();
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(0, 4,0, 3));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(4,5,0, 8));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(0, 4, 0, 3));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(4, 5, 0, 8));
             ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(5, 6, 0, 2));
             ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(6, 7, 0, 7));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(7, 11,0, 3));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(11,15,0, 2));
-            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(15, 20,0, 5));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(7, 11, 0, 3));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(11, 15, 0, 2));
+            ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(15, 20, 0, 5));
             ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(20, 21, 0, 1));
             ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(21, 22, 0, 4));
             ArrivalsPerHourAlternative.Add(new PrismUserControl2ViewModel.ScatterBarInfo(22, 23, 0, 6));
