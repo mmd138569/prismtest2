@@ -44,8 +44,16 @@ namespace prismtest2.ViewModels
 
             for (int hour = 0; hour <= 255; hour++)
             {
-              
+                int itemsCount = rnd.Next(1, 5);
+                if (hour >= 8 && hour < 16)
+                {
+                    itemsCount = rnd.Next(5, 10);
+                }
 
+                for (int k = 0; k < itemsCount; k++)
+                {
+                    ArrivalsPerHour.Add(hour);
+                }
             }
 
             ArrivalsPerHourAlternative = new ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo>();
