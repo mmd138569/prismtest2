@@ -11,19 +11,19 @@
                <StackPanel Margin="2,40,2,2" Visibility="Visible" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="User Name:" Foreground="Bisque" Margin="12,20,2,2"></Label>
-                    <TextBox Text="{Binding username_txtbox}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque"></TextBox>
+                    <TextBox Text="{Binding username_txtbox}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="Email:" Foreground="Bisque" Margin="12,20,6,2"></Label>
-                    <TextBox Text="{Binding Email_txtbox}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="206" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" ></TextBox>
+                    <TextBox Text="{Binding Email_txtbox}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="206" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="Pass Word:" Foreground="Bisque" Margin="12,20,6,2"></Label>
-                    <TextBox Text="{Binding password_txtbox}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque"  ></TextBox>
+                    <TextBox Text="{Binding password_txtbox}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque" ></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="ReEnter Pass Word:" Foreground="Bisque" Margin="12,20,6,2"></Label>
-                    <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="140" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" ></TextBox>
+                    <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="140" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque"></TextBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel  Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Height="152" Margin="0,80,0,0">
