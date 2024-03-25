@@ -8,13 +8,14 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using prismtest2.ViewModels;
+using Telerik.Windows.Controls;
 
 namespace prismtest2.ViewModels
 {
     public class PrismUserControl2ViewModel : BindableBase
     {
         private IRegionManager _regionManager;
-        public ObservableCollection<Gray> listofinputs;
+        public ObservableCollection<Gray> listofInputs;
 
         public PrismUserControl2ViewModel(IRegionManager regionManager)
         {
@@ -35,24 +36,16 @@ namespace prismtest2.ViewModels
         public ObservableCollection<double> Ticks { get; set; }
 
 
-        public PrismUserControl2ViewModel(ObservableCollection<Gray> listofinputs)
+        public PrismUserControl2ViewModel(ObservableCollection<double> listofinputs)
         {
-
-            Trace.WriteLine(listofinputs);
+            //listofInputs = listofinputs;
             ArrivalsPerHour = new ObservableCollection<double>();
+            ArrivalsPerHour.AddRange(listofinputs);
 
             for (int hour = 0; hour <= 255; hour++)
             {
-                int itemsCount = rnd.Next(1, 5);
-                if (hour >= 8 && hour < 16)
-                {
-                    itemsCount = rnd.Next(5, 10);
-                }
+              
 
-                for (int k = 0; k < itemsCount; k++)
-                {
-                    ArrivalsPerHour.Add(hour);
-                }
             }
 
             ArrivalsPerHourAlternative = new ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo>();
