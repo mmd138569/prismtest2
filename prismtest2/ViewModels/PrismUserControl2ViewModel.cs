@@ -38,8 +38,9 @@ namespace prismtest2.ViewModels
         public PrismUserControl2ViewModel(ObservableCollection<Gray> listofinputs)
         {
             //Trace.WriteLine(listofinputs);
-            ArrivalsPerHour = new ObservableCollection<double>();
-            for (int hour = 0; hour <= 24; hour++)
+           ArrivalsPerHour = new ObservableCollection<double>();
+           //Convert.ToDouble(listofinputs.ToString());
+             for (int hour = 0; hour <= 255; hour++)
             {
                 int itemsCount = rnd.Next(1, 5);
                 if (hour >= 8 && hour < 16)
