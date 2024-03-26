@@ -21,7 +21,7 @@
     <Grid Background="#31363F">
         <telerik:ChartHistogramSource x:Name="chartHistogramSource"
                                       ItemsSource="{Binding ArrivalsPerHour}"
-                                      Interval="3" Grid.ColumnSpan="2" />
+                                      Interval="1" Grid.ColumnSpan="2" />
 
         <TextBlock Text="Abundance of the color"  TextAlignment="Center" FontSize="16" Foreground= "Bisque" Grid.ColumnSpan="2"/>
     

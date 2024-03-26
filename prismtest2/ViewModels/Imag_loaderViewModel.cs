@@ -58,12 +58,12 @@ namespace prismtest2.ViewModels
                         listofinputs.Add(doubleValue);
                     }
                 }
+                _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2");
 
                 PrismUserControl2ViewModel prismUser = new PrismUserControl2ViewModel(listofinputs);
             }
             Console.WriteLine(listofinputs);
 
-            _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2");
 
         }
         public DelegateCommand sharpening { get; set; }
