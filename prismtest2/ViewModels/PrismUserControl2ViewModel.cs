@@ -13,7 +13,7 @@ using Telerik.Windows.Documents.Spreadsheet.Expressions.Functions;
 
 namespace prismtest2.ViewModels
 {
-    public class PrismUserControl2ViewModel : BindableBase
+    public class PrismUserControl2ViewModel : BindableBase,INavigationAware
     {
         private IRegionManager _regionManager;
         public ObservableCollection<double> listofInputs { get; set; }
@@ -27,24 +27,55 @@ namespace prismtest2.ViewModels
 
         private static Random rnd = new Random(1234567890);
 
-        public ObservableCollection<double> ArrivalsPerHour { get; set; }
+        // public ObservableCollection<int> ArrivalsPerHour { get; set; }
+        private ObservableCollection<double> _ArrivalsPerHour;
+
+        public ObservableCollection<double> ArrivalsPerHour
+        {
+            get
+            {
+                return _ArrivalsPerHour;
+            }
+            set
+            {
+                SetProperty(ref _ArrivalsPerHour, value);
+            }
+        }
+
         public ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo> ArrivalsPerHourAlternative { get; set; }
         public ObservableCollection<double> Ticks { get; set; }
 
 
-        public PrismUserControl2ViewModel(ObservableCollection<double> listofinputs)
+
+        public class ScatterBarInfo
+        {
+            public double HorizontalLow { get; set; }
+            public double HorizontalHigh { get; set; }
+            public double VerticalLow { get; set; }
+            public double VerticalHigh { get; set; }
+
+            public ScatterBarInfo(double horizontalLow, double horizontalHigh, double verticalLow, double verticalHigh)
+            {
+                VerticalLow = verticalLow;
+                VerticalHigh = verticalHigh;
+                HorizontalLow = horizontalLow;
+                HorizontalHigh = horizontalHigh;
+            }
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
         {
             //listofInputs = listofinputs;
             ArrivalsPerHour = new ObservableCollection<double>();
             listofInputs = new ObservableCollection<double>();
-
-                listofInputs.AddRange(listofinputs);
-                int[] a = new int[256];
-                for (int i = 0; i < 256; i++)
-                {
-                    a[i] = 0;
-                }
-            for (int hour = 0; hour <= listofinputs.Count; hour++)
+            var listofinputs = (List<double>)navigationContext.Parameters["mydata"];
+            listofInputs.AddRange(listofinputs);
+            double[] a = new double[256];
+            for (int i = 0; i < 256; i++)
+            {
+                a[i] = 0;
+            }
+            for (int hour = 0; hour < listofinputs.Count; hour++)
             {
                 //int itemsCount = rnd.Next(1, 5);
                 //if (hour >= 8 && hour < 16)
@@ -63,26 +94,20 @@ namespace prismtest2.ViewModels
                 }
             }
 
-            if (a[0] != 0)
+            if (a[6] != 0)
             {
                 ArrivalsPerHour.AddRange(a);
             }
         }
 
-        public class ScatterBarInfo
+        public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            public double HorizontalLow { get; set; }
-            public double HorizontalHigh { get; set; }
-            public double VerticalLow { get; set; }
-            public double VerticalHigh { get; set; }
+            return true;
+        }
 
-            public ScatterBarInfo(double horizontalLow, double horizontalHigh, double verticalLow, double verticalHigh)
-            {
-                this.VerticalLow = verticalLow;
-                this.VerticalHigh = verticalHigh;
-                this.HorizontalLow = horizontalLow;
-                this.HorizontalHigh = horizontalHigh;
-            }
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+
         }
     }
 }

@@ -19,6 +19,8 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using Microsoft.OData.UriParser;
+using Prism.Navigation;
 
 namespace prismtest2.ViewModels
 {
@@ -45,6 +47,8 @@ namespace prismtest2.ViewModels
             {
                 Image<Gray, byte> inputImages = new Image<Gray, byte>(image);
                 listofinputs = new ObservableCollection<double>();
+                var parameter = new NavigationParameters();
+                var doubleValues =new List<double> ();
                 for (int y = 0; y < inputImages.Height; y++)
                 {
 
@@ -55,14 +59,18 @@ namespace prismtest2.ViewModels
                         //Trace.WriteLine("=====================================");
                         //Trace.WriteLine(pixelValue);
                         double doubleValue = pixelValue.Intensity;
-                        listofinputs.Add(doubleValue);
+                        //listofinputs.Add(doubleValue);
+                        doubleValues.Add(doubleValue);
                     }
                 }
-                _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2");
+                parameter.Add("mydata", doubleValues);
 
-                PrismUserControl2ViewModel prismUser = new PrismUserControl2ViewModel(listofinputs);
+                // PrismUserControl2ViewModel prismUser = new PrismUserControl2ViewModel(listofinputs);
+
+                _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2",parameter);
+
             }
-            Console.WriteLine(listofinputs);
+           // Console.WriteLine(listofinputs);
 
 
         }
