@@ -24,6 +24,7 @@ namespace prismtest2.ViewModels
             //Trace.WriteLine(listofinputs);
         }
 
+        public ObservableCollection<double> ArrivalsPerHour1;
 
         private static Random rnd = new Random(1234567890);
 
@@ -67,6 +68,8 @@ namespace prismtest2.ViewModels
         {
             //listofInputs = listofinputs;
             ArrivalsPerHour = new ObservableCollection<double>();
+            ArrivalsPerHour1 = new ObservableCollection<double>();
+
             listofInputs = new ObservableCollection<double>();
             var listofinputs = (List<double>)navigationContext.Parameters["mydata"];
             listofInputs.AddRange(listofinputs);
@@ -77,16 +80,6 @@ namespace prismtest2.ViewModels
             }
             for (int hour = 0; hour < listofinputs.Count; hour++)
             {
-                //int itemsCount = rnd.Next(1, 5);
-                //if (hour >= 8 && hour < 16)
-                //{
-                //    itemsCount = rnd.Next(5, 10);
-                //}
-
-                //for (int k = 0; k < itemsCount; k++)
-                //{
-                //    ArrivalsPerHour.Add(hour);
-                //}
                 if (listofInputs.Count != 0)
                 {
                     int convertor = (int)listofInputs[hour];
@@ -96,7 +89,15 @@ namespace prismtest2.ViewModels
 
             if (a[6] != 0)
             {
-                ArrivalsPerHour.AddRange(a);
+                ArrivalsPerHour1.AddRange(a);
+            }
+
+            for (int hour = 0; hour < ArrivalsPerHour1.Count; hour++)
+            { 
+                for (int k = 0; k < ArrivalsPerHour1[hour]; k++)
+                {
+                    ArrivalsPerHour.Add(hour);
+                }
             }
         }
 

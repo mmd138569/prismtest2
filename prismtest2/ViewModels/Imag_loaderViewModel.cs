@@ -66,7 +66,7 @@ namespace prismtest2.ViewModels
                 parameter.Add("mydata", doubleValues);
 
                 // PrismUserControl2ViewModel prismUser = new PrismUserControl2ViewModel(listofinputs);
-
+                //we should not navigate the view and then send the data but we should use INavigate
                 _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2",parameter);
 
             }

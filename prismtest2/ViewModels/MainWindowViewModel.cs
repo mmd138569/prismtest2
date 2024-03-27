@@ -81,7 +81,7 @@ namespace prismtest2.ViewModels
             get { return _Resizer_Height; }
             set { SetProperty(ref _Resizer_Height, value); }
         }
-        private string _checking_username;
+        private string _checking_username="sdf";
 
         public string checking_username
         {
@@ -115,7 +115,7 @@ namespace prismtest2.ViewModels
                 user_list.Add(customer);
             }
         }
-        private string _cheking_pasword;
+        private string _cheking_pasword="df";
         public string cheking_pasword
         {
             get { return _cheking_pasword; }
