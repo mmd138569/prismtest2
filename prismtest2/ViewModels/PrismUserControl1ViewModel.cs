@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using prismtest2.Models.Entity;
 using prismtest2.Models.Services;
+using System.Security.Cryptography;
+using System.Text;
+using System.Collections;
 
 namespace prismtest2.ViewModels
 {
@@ -62,14 +65,55 @@ namespace prismtest2.ViewModels
         }
         private void LoginClick()
         {
+            string secret = "$Jk!pTq#20hdLA$5"; //encryption secret
+            byte[] key = Encoding.UTF8.GetBytes(secret);
+            byte[] iv = new byte[16];  // 16-byte initialization vector
+            new Random().NextBytes(iv);
+
+            string plainText = username_txtbox; //Text to encode
+            byte[] user_plain = Encoding.UTF8.GetBytes(plainText);
+            byte[] cipherUsername = Encrypt(user_plain, key, iv);
+            string cipherUsernamestr = Encoding.Default.GetString(cipherUsername);
+
+            string Emailtxt = Email_txtbox; //Text to encode
+            byte[] Emailplain = Encoding.UTF8.GetBytes(Emailtxt);
+            byte[] cipherEmail = Encrypt(Emailplain, key, iv);
+            string cipherEmailstr = Encoding.Default.GetString(cipherEmail);
+
+            string paswordtxt = password_txtbox; //Text to encode
+            byte[] passwordplain = Encoding.UTF8.GetBytes(paswordtxt);
+            byte[] ciperpassword = Encrypt(passwordplain, key, iv);
+            string ciperpasswordstr = Encoding.Default.GetString(ciperpassword);
+
             Users users = new Users()
             {
-                Username = username_txtbox,
-                Email = Email_txtbox,
-                Password = password_txtbox,
+                Username = cipherUsernamestr,
+                Email = cipherEmailstr,
+                Password = ciperpasswordstr,
             };
             add_User.adduser(users);
             _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
+        }
+        static byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
+        {
+            byte[] encryptedBytes = null;
+
+            // Set up the encryption objects
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.PKCS7;
+
+                // Encrypt the input plaintext using the AES algorithm
+                using (ICryptoTransform encryptor = aes.CreateEncryptor())
+                {
+                    encryptedBytes = encryptor.TransformFinalBlock(plainBytes, 0, plainBytes.Length);
+                }
+            }
+
+            return encryptedBytes;
         }
     }
 }

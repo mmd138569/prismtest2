@@ -96,9 +96,9 @@ namespace prismtest2.ViewModels
         {
             if (image != null)
             {
-                Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
+                Image<Gray, byte> inputImage = new Image<Gray, byte>(image);
                 inputImage._EqualizeHist();
-                inputImage._GammaCorrect(6d);
+                inputImage._GammaCorrect(1.5d);
                 CvInvoke.Imshow("sharpenedImage", inputImage);
             }
         }
