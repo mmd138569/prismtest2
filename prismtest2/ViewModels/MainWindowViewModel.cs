@@ -8,6 +8,8 @@ using prismtest2.Models.Services;
 using System.Collections.ObjectModel;
 using System.DirectoryServices.ActiveDirectory;
 using System.Windows;
+using System.Security.Cryptography;
+using SharpDX.Text;
 
 namespace prismtest2.ViewModels
 {
@@ -97,6 +99,8 @@ namespace prismtest2.ViewModels
         }
         public void fillData(string cheking_username, string cheking_password)
         {
+
+
             // employees = EmployeeDataAccess.employees;
             user_list.Clear();
             foreach (var customerlistDTO in createuser.userListDtos())
@@ -108,6 +112,8 @@ namespace prismtest2.ViewModels
                     Password = customerlistDTO.Password,
                     Email = customerlistDTO.Email
                 };
+              //  byte[] decryptedBytes = Decrypt(, key, iv);
+               // string decryptedText = Encoding.UTF8.GetString(decryptedBytes);
                 if (customer.Password == cheking_password && customer.Username == cheking_username)
                 {
                     accessing = true;
@@ -127,6 +133,27 @@ namespace prismtest2.ViewModels
                     RaisePropertyChanged();
                 }
             }
+        }
+        static byte[] Decrypt(byte[] cipherBytes, byte[] key, byte[] iv)
+        {
+            byte[] decryptedBytes = null;
+
+            // Set up the encryption objects
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.PKCS7;
+
+                // Decrypt the input ciphertext using the AES algorithm
+                using (ICryptoTransform decryptor = aes.CreateDecryptor())
+                {
+                    decryptedBytes = decryptor.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
+                }
+            }
+
+            return decryptedBytes;
         }
     }
 }

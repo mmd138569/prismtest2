@@ -12,8 +12,14 @@ using System.Collections;
 
 namespace prismtest2.ViewModels
 {
+
     public class PrismUserControl1ViewModel : BindableBase
     {
+      //  string secret = "$Jk!pTq#20hdLA$5"; //encryption secret
+      public  byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
+        //String base64String = "SGVsbG8gV29ybGQ=";
+     public   byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
+
         public AddUser add_User;
         private IRegionManager _regionManager;
         public DelegateCommand Login { get; set; }
@@ -65,11 +71,7 @@ namespace prismtest2.ViewModels
         }
         private void LoginClick()
         {
-            string secret = "$Jk!pTq#20hdLA$5"; //encryption secret
-            byte[] key = Encoding.UTF8.GetBytes(secret);
-            byte[] iv = new byte[16];  // 16-byte initialization vector
-            new Random().NextBytes(iv);
-
+           
             string plainText = username_txtbox; //Text to encode
             byte[] user_plain = Encoding.UTF8.GetBytes(plainText);
             byte[] cipherUsername = Encrypt(user_plain, key, iv);
