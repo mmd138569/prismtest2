@@ -17,7 +17,7 @@ namespace prismtest2.ViewModels
     {
       //  string secret = "$Jk!pTq#20hdLA$5"; //encryption secret
       public  byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
-        //String base64String = "SGVsbG8gV29ybGQ=";
+        String base64String = "SGVsbG8gV29ybGQ=";
      public   byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
 
         public AddUser add_User;
@@ -29,6 +29,8 @@ namespace prismtest2.ViewModels
             Login = new DelegateCommand(LoginClick);
             //dont forger the create the new instance form your object if you dont you ll got the nullExeption Error
             add_User=new AddUser();
+            Resizer_width = 810;
+            Resizer_Height = 530;
         }
         private string _username_txtbox;
         public string username_txtbox
@@ -75,17 +77,17 @@ namespace prismtest2.ViewModels
             string plainText = username_txtbox; //Text to encode
             byte[] user_plain = Encoding.UTF8.GetBytes(plainText);
             byte[] cipherUsername = Encrypt(user_plain, key, iv);
-            string cipherUsernamestr = Encoding.Default.GetString(cipherUsername);
+            string cipherUsernamestr = Convert.ToBase64String(cipherUsername);
 
             string Emailtxt = Email_txtbox; //Text to encode
             byte[] Emailplain = Encoding.UTF8.GetBytes(Emailtxt);
             byte[] cipherEmail = Encrypt(Emailplain, key, iv);
-            string cipherEmailstr = Encoding.Default.GetString(cipherEmail);
+            string cipherEmailstr = Convert.ToBase64String(cipherEmail);
 
             string paswordtxt = password_txtbox; //Text to encode
             byte[] passwordplain = Encoding.UTF8.GetBytes(paswordtxt);
             byte[] ciperpassword = Encrypt(passwordplain, key, iv);
-            string ciperpasswordstr = Encoding.Default.GetString(ciperpassword);
+            string ciperpasswordstr = Convert.ToBase64String(ciperpassword);
 
             Users users = new Users()
             {
@@ -95,6 +97,18 @@ namespace prismtest2.ViewModels
             };
             add_User.adduser(users);
             _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
+        }
+        private int _Resizer_widthame;
+        public int Resizer_width
+        {
+            get { return _Resizer_widthame; }
+            set { SetProperty(ref _Resizer_widthame, value); }
+        }
+        private int _Resizer_Height;
+        public int Resizer_Height
+        {
+            get { return _Resizer_Height; }
+            set { SetProperty(ref _Resizer_Height, value); }
         }
         static byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
         {

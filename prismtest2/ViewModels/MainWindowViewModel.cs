@@ -69,7 +69,8 @@ namespace prismtest2.ViewModels
         {
 
             _regionManager.RequestNavigate("ContentRegion", "PrismUserControl1");
-
+            Resizer_width = 810;
+            Resizer_Height = 530;
         }
         private int _Resizer_widthame;
         public int Resizer_width
@@ -100,9 +101,12 @@ namespace prismtest2.ViewModels
         public void fillData(string cheking_username, string cheking_password)
         {
 
+         byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
+        //String base64String = "SGVsbG8gV29ybGQ=";
+         byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
 
-            // employees = EmployeeDataAccess.employees;
-            user_list.Clear();
+        // employees = EmployeeDataAccess.employees;
+        user_list.Clear();
             foreach (var customerlistDTO in createuser.userListDtos())
             {
                 Users customer = new Users()
@@ -112,9 +116,10 @@ namespace prismtest2.ViewModels
                     Password = customerlistDTO.Password,
                     Email = customerlistDTO.Email
                 };
-              //  byte[] decryptedBytes = Decrypt(, key, iv);
-               // string decryptedText = Encoding.UTF8.GetString(decryptedBytes);
-                if (customer.Password == cheking_password && customer.Username == cheking_username)
+                byte[] passwordplain = Encoding.UTF8.GetBytes(customer.Username);
+                byte[] decryptedBytes = Decrypt(passwordplain, key, iv);
+                string decryptedText = Convert.ToBase64String(decryptedBytes);
+                if (customer.Password == cheking_password && decryptedText == cheking_username)
                 {
                     accessing = true;
                 }
