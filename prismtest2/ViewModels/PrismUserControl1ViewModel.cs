@@ -73,7 +73,7 @@ namespace prismtest2.ViewModels
         }
         private void LoginClick()
         {
-           
+
             string plainText = username_txtbox; //Text to encode
             byte[] user_plain = Encoding.UTF8.GetBytes(plainText);
             byte[] cipherUsername = Encrypt(user_plain, key, iv);
@@ -113,7 +113,7 @@ namespace prismtest2.ViewModels
         static byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
         {
             byte[] encryptedBytes = null;
-
+            string str;
             // Set up the encryption objects
             using (Aes aes = Aes.Create())
             {

@@ -116,10 +116,15 @@ namespace prismtest2.ViewModels
                     Password = customerlistDTO.Password,
                     Email = customerlistDTO.Email
                 };
-                byte[] passwordplain = Encoding.UTF8.GetBytes(customer.Username);
-                byte[] decryptedBytes = Decrypt(passwordplain, key, iv);
+                byte[] data = Convert.FromBase64String(customer.Username);
+                byte[] decryptedBytes = Decrypt(data, key, iv);
                 string decryptedText = Convert.ToBase64String(decryptedBytes);
-                if (customer.Password == cheking_password && decryptedText == cheking_username)
+               
+                byte[] data1 = Convert.FromBase64String(customer.Password);
+                byte[] decryptedBytes1 = Decrypt(data1, key, iv);
+                string decryptedText1 = Convert.ToBase64String(decryptedBytes1);
+
+                if (decryptedText1 == cheking_password && decryptedText == cheking_username)
                 {
                     accessing = true;
                 }
@@ -157,7 +162,7 @@ namespace prismtest2.ViewModels
                     decryptedBytes = decryptor.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
                 }
             }
-
+            
             return decryptedBytes;
         }
     }
