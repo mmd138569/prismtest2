@@ -104,7 +104,7 @@ namespace prismtest2.ViewModels
 
         private void LoginClick()
         {
-            if (username_txtbox != null && password_txtbox != null)
+            if (username_txtbox != null && password_txtbox != null && reEnterPassword!=null)
             {
                 string plainText = username_txtbox; //Text to encode
                 byte[] user_plain = Encoding.UTF8.GetBytes(plainText);
@@ -139,6 +139,11 @@ namespace prismtest2.ViewModels
                     PasswordError = "CHECK YOUR PASSWORD AGAIN";
                     passErrorvisibility = Visibility.Visible;
                 }
+            }
+            else
+            {
+                PasswordError = "PLEASE FILL THE TEXT BOXES";
+                passErrorvisibility = Visibility.Visible;
             }
         }
 
