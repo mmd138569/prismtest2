@@ -17,7 +17,6 @@ namespace prismtest2.ViewModels
     {
       //  string secret = "$Jk!pTq#20hdLA$5"; //encryption secret
       public  byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
-        String base64String = "SGVsbG8gV29ybGQ=";
      public   byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
 
         public AddUser add_User;
