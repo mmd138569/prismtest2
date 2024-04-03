@@ -23,8 +23,11 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Label Content="ReEnter Pass Word:" Foreground="Bisque" Margin="12,20,6,2"></Label>
-                    <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="140" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque"></TextBox>
+                    <TextBox Text="{Binding reEnterPassword}"  Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="140" Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque"></TextBox>
                 </StackPanel>
+                   <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                       <TextBlock Text="{Binding PasswordError}" Foreground="Bisque" HorizontalAlignment="Center" Visibility="{Binding passErrorvisibility}" Style="{StaticResource ErorLabel}"></TextBlock>
+                   </StackPanel>
             </StackPanel>
             <StackPanel  Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Height="152" Margin="0,80,0,0">
 
