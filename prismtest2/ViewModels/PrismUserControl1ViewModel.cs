@@ -112,7 +112,6 @@ namespace prismtest2.ViewModels
         static byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
         {
             byte[] encryptedBytes = null;
-            string str;
             // Set up the encryption objects
             using (Aes aes = Aes.Create())
             {
