@@ -117,13 +117,16 @@ namespace prismtest2.ViewModels
                     Password = customerlistDTO.Password,
                     Email = customerlistDTO.Email
                 };
+
+                //==================================== NOTE =============================
+                //if we use UTF8 it convert to the 24byte and we cant decrypt becuase our input is not valid. actually we should use frombasestring to convert to byte array 
                 byte[] data = Convert.FromBase64String(customer.Username);
                 string decryptedBytes = Decrypt(data, key, iv);
-               // string decryptedText = Convert.ToBase64String(decryptedBytes);
-               
+
+                //========================================================================
                 byte[] data1 = Convert.FromBase64String(customer.Password);
                 string decryptedBytes1 = Decrypt(data1, key, iv);
-              //  string decryptedText1 = Convert.ToBase64String(decryptedBytes1);
+
 
                 if (decryptedBytes1 == cheking_password && decryptedBytes == cheking_username)
                 {
