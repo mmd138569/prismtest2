@@ -10,6 +10,7 @@ using System.DirectoryServices.ActiveDirectory;
 using System.Windows;
 using System.Security.Cryptography;
 using SharpDX.Text;
+using System.IO;
 
 namespace prismtest2.ViewModels
 {
@@ -117,14 +118,14 @@ namespace prismtest2.ViewModels
                     Email = customerlistDTO.Email
                 };
                 byte[] data = Convert.FromBase64String(customer.Username);
-                byte[] decryptedBytes = Decrypt(data, key, iv);
-                string decryptedText = Convert.ToBase64String(decryptedBytes);
+                string decryptedBytes = Decrypt(data, key, iv);
+               // string decryptedText = Convert.ToBase64String(decryptedBytes);
                
                 byte[] data1 = Convert.FromBase64String(customer.Password);
-                byte[] decryptedBytes1 = Decrypt(data1, key, iv);
-                string decryptedText1 = Convert.ToBase64String(decryptedBytes1);
+                string decryptedBytes1 = Decrypt(data1, key, iv);
+              //  string decryptedText1 = Convert.ToBase64String(decryptedBytes1);
 
-                if (decryptedText1 == cheking_password && decryptedText == cheking_username)
+                if (decryptedBytes1 == cheking_password && decryptedBytes == cheking_username)
                 {
                     accessing = true;
                 }
@@ -144,26 +145,24 @@ namespace prismtest2.ViewModels
                 }
             }
         }
-        static byte[] Decrypt(byte[] cipherBytes, byte[] key, byte[] iv)
+        static string Decrypt(byte[] cipheredtext, byte[] key, byte[] iv)
         {
-            byte[] decryptedBytes = null;
-
-            // Set up the encryption objects
+            string simpletext = String.Empty;
             using (Aes aes = Aes.Create())
             {
-                aes.Key = key;
-                aes.IV = iv;
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-
-                // Decrypt the input ciphertext using the AES algorithm
-                using (ICryptoTransform decryptor = aes.CreateDecryptor())
+                ICryptoTransform decryptor = aes.CreateDecryptor(key, iv);
+                using (MemoryStream memoryStream = new MemoryStream(cipheredtext))
                 {
-                    decryptedBytes = decryptor.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
+                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader streamReader = new StreamReader(cryptoStream))
+                        {
+                            simpletext = streamReader.ReadToEnd();
+                        }
+                    }
                 }
             }
-            
-            return decryptedBytes;
+            return simpletext;
         }
     }
 }
