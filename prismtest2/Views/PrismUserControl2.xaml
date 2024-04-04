@@ -20,39 +20,41 @@
     </UserControl.Resources>
     <Border CornerRadius="3" BorderBrush="Bisque" BorderThickness="3">
         <Grid Background="#31363F">
+            <Button Command="{Binding prevpage}" BorderBrush="#31363F" Width="45" Height="45" Foreground="#31363F" Background="#31363F" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
 
-        <telerik:ChartHistogramSource x:Name="chartHistogramSource"
+            <Path Data="{StaticResource prevbtn }"  Width="30"  Fill="Bisque"  Margin="10,10,0,0" Height="30"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <telerik:ChartHistogramSource x:Name="chartHistogramSource"
                                       ItemsSource="{Binding ArrivalsPerHour}"
                                       Interval="1" Grid.ColumnSpan="3" />
 
-        <TextBlock Text="Abundance of the color"  TextAlignment="Center" FontSize="16" Foreground= "Bisque" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Abundance of the color"  TextAlignment="Center" FontSize="16" Foreground= "Bisque" Grid.ColumnSpan="2"/>
 
-        <telerik:RadCartesianChart Palette="Windows11" Margin="0,44,0,0" Foreground="Bisque">
-            <telerik:RadCartesianChart.VerticalAxis>
-                <telerik:LinearAxis Title="Number of arrivals"/>
-            </telerik:RadCartesianChart.VerticalAxis>
+            <telerik:RadCartesianChart Palette="Windows11" Margin="0,44,0,0" Foreground="Bisque">
+                <telerik:RadCartesianChart.VerticalAxis>
+                    <telerik:LinearAxis Title="Number of arrivals"/>
+                </telerik:RadCartesianChart.VerticalAxis>
 
-            <telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:RadCartesianChart.HorizontalAxis>
 
-                <telerik:LinearAxis MajorStep="{Binding ElementName=chartHistogramSource, Path=ActualInterval}"
+                    <telerik:LinearAxis MajorStep="{Binding ElementName=chartHistogramSource, Path=ActualInterval}"
                                     Maximum="250"/>
-            </telerik:RadCartesianChart.HorizontalAxis>
-            <telerik:RadCartesianChart.Grid>
-                <telerik:CartesianChartGrid MajorLinesVisibility="Y">
+                </telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:RadCartesianChart.Grid>
+                    <telerik:CartesianChartGrid MajorLinesVisibility="Y">
 
-                    <telerik:CartesianChartGrid.MajorYLineStyle>
-                        <Style TargetType="Line">
-                            <Setter Property="Stroke" Value="Bisque"/>
-                        </Style>
-                    </telerik:CartesianChartGrid.MajorYLineStyle>
-                </telerik:CartesianChartGrid>
-            </telerik:RadCartesianChart.Grid>
-            <telerik:RadCartesianChart.Behaviors>
-                <telerik:ChartTooltipBehavior />
-            </telerik:RadCartesianChart.Behaviors>
-            <telerik:ScatterRangeBarSeries ItemsSource="{Binding ElementName=chartHistogramSource}"/>
-        </telerik:RadCartesianChart>
-    </Grid>
+                        <telerik:CartesianChartGrid.MajorYLineStyle>
+                            <Style TargetType="Line">
+                                <Setter Property="Stroke" Value="Bisque"/>
+                            </Style>
+                        </telerik:CartesianChartGrid.MajorYLineStyle>
+                    </telerik:CartesianChartGrid>
+                </telerik:RadCartesianChart.Grid>
+                <telerik:RadCartesianChart.Behaviors>
+                    <telerik:ChartTooltipBehavior />
+                </telerik:RadCartesianChart.Behaviors>
+                <telerik:ScatterRangeBarSeries ItemsSource="{Binding ElementName=chartHistogramSource}"/>
+            </telerik:RadCartesianChart>
+        </Grid>
     </Border>
 
 </UserControl>

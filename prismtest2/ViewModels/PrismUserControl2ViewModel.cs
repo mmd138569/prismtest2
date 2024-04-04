@@ -10,6 +10,9 @@ using System.Linq;
 using prismtest2.ViewModels;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Documents.Spreadsheet.Expressions.Functions;
+using Emgu.CV;
+using SharpDX.Direct2D1.Effects;
+using DelegateCommand = Prism.Commands.DelegateCommand;
 
 namespace prismtest2.ViewModels
 {
@@ -17,11 +20,14 @@ namespace prismtest2.ViewModels
     {
         private IRegionManager _regionManager;
         public ObservableCollection<double> listofInputs { get; set; }
+        public DelegateCommand PrevousPage { get; set; }
 
         public PrismUserControl2ViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
             //Trace.WriteLine(listofinputs);
+            PrevousPage = new DelegateCommand(prevbtn);
+
         }
 
         public ObservableCollection<double> ArrivalsPerHour1;
@@ -43,6 +49,10 @@ namespace prismtest2.ViewModels
             }
         }
 
+        public void prevbtn()
+        {
+            _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
+        }
         public ObservableCollection<PrismUserControl2ViewModel.ScatterBarInfo> ArrivalsPerHourAlternative { get; set; }
         public ObservableCollection<double> Ticks { get; set; }
 
