@@ -32,7 +32,7 @@ namespace prismtest2.ViewModels
 
         public ObservableCollection<double> ArrivalsPerHour1;
 
-        private static Random rnd = new Random(1234567890);
+        //private static Random rnd = new Random(1234567890);
 
         // public ObservableCollection<int> ArrivalsPerHour { get; set; }
         private ObservableCollection<double> _ArrivalsPerHour;
