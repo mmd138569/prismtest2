@@ -20,13 +20,13 @@ namespace prismtest2.ViewModels
     {
         private IRegionManager _regionManager;
         public ObservableCollection<double> listofInputs { get; set; }
-        public DelegateCommand PrevousPage { get; set; }
+        public DelegateCommand prevpage { get; set; }
 
         public PrismUserControl2ViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
             //Trace.WriteLine(listofinputs);
-            PrevousPage = new DelegateCommand(prevbtn);
+            prevpage = new DelegateCommand(prevbtn);
 
         }
 
