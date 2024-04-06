@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
-             prism:ViewModelLocator.AutoWireViewModel="True"   MaxHeight="510" MinWidth="810" MinHeight="510" MaxWidth="810" Height="301" >
+             prism:ViewModelLocator.AutoWireViewModel="True"   MaxHeight="510" MinWidth="850" MinHeight="510" MaxWidth="850" Height="301" >
     <UserControl.Resources>
         <DataTemplate x:Key="HistogramChartToolTipTemplate">
             <Border Padding="10" Background="Bisque" BorderBrush="Black" BorderThickness="1" >
@@ -37,7 +37,7 @@
                 <telerik:RadCartesianChart.HorizontalAxis>
 
                     <telerik:LinearAxis MajorStep="{Binding ElementName=chartHistogramSource, Path=ActualInterval}"
-                                    Maximum="250"/>
+                                    Maximum="255"/>
                 </telerik:RadCartesianChart.HorizontalAxis>
                 <telerik:RadCartesianChart.Grid>
                     <telerik:CartesianChartGrid MajorLinesVisibility="Y">

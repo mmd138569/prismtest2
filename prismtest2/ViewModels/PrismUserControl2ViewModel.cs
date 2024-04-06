@@ -18,6 +18,7 @@ namespace prismtest2.ViewModels
 {
     public class PrismUserControl2ViewModel : BindableBase,INavigationAware
     {
+        
         private IRegionManager _regionManager;
         public ObservableCollection<double> listofInputs { get; set; }
         public DelegateCommand prevpage { get; set; }
@@ -97,10 +98,10 @@ namespace prismtest2.ViewModels
                 }
             }
 
-            if (a[6] != 0)
-            {
-                ArrivalsPerHour1.AddRange(a);
-            }
+          //  if (a[6] != 0)
+          //  {
+               ArrivalsPerHour1.AddRange(a);
+            //}
 
             for (int hour = 0; hour < ArrivalsPerHour1.Count; hour++)
             { 

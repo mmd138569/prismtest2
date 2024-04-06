@@ -45,7 +45,7 @@ namespace prismtest2.ViewModels
             {
                 _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
                 errorvisibility = Visibility.Collapsed;
-                Resizer_width = 810;
+                Resizer_width = 850;
                 Resizer_Height = 530;
             }
             else
@@ -70,7 +70,7 @@ namespace prismtest2.ViewModels
         {
 
             _regionManager.RequestNavigate("ContentRegion", "PrismUserControl1");
-            Resizer_width = 810;
+            Resizer_width = 850;
             Resizer_Height = 530;
         }
         private int _Resizer_widthame;
