@@ -28,7 +28,6 @@ namespace prismtest2.ViewModels
         private IRegionManager _regionManager;
         public DelegateCommand Signup { get; set; }
         public DelegateCommand Login { get; set; }
-
         public MainWindowViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
