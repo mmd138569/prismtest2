@@ -29,7 +29,7 @@ namespace prismtest2.ViewModels
         {
             _regionManager = regionManager;
             Login = new DelegateCommand(LoginClick);
-            //dont forger the create the new instance form your object if you dont you ll got the nullExeption Error
+            //don't forger to create the new instance form your object if you don't you ll got the nullExeption Error
             add_User = new AddUser();
             Resizer_width = 810;
             Resizer_Height = 530;

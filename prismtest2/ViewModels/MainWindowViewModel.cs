@@ -11,6 +11,7 @@ using System.Windows;
 using System.Security.Cryptography;
 using SharpDX.Text;
 using System.IO;
+using System.Linq;
 
 namespace prismtest2.ViewModels
 {
@@ -25,6 +26,10 @@ namespace prismtest2.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+        private DelegateCommand _exitCommand;
+        public DelegateCommand ExitCommand =>
+            _exitCommand ?? (_exitCommand = new DelegateCommand(ExecuteExitCommand));
+
         private IRegionManager _regionManager;
         public DelegateCommand Signup { get; set; }
         public DelegateCommand Login { get; set; }
@@ -36,6 +41,10 @@ namespace prismtest2.ViewModels
             createuser = new CreateUser();
             Resizer_Height = 510;
             Resizer_width = 310;
+        }
+        void ExecuteExitCommand()
+        {
+            Application.Current.Shutdown();
         }
         private void LoginClick()
         {
