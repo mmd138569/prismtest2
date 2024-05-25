@@ -148,17 +148,17 @@ namespace prismtest2.ViewModels
 
         public void OnClick()
         {
-            WINFORM.FolderBrowserDialog dialog = new WINFORM.FolderBrowserDialog();
-            dialog.InitialDirectory = "C:\\Users\\AFRACO\\Source\\Repos\\prismtest2\\prismtest2";
-            WINFORM.DialogResult result = dialog.ShowDialog();
-            if (result == WINFORM.DialogResult.OK)
+            using (WINFORM.FolderBrowserDialog dialog = new WINFORM.FolderBrowserDialog())
             {
-                string folder = dialog.SelectedPath;
-                ImageCollection = LoadImagesFromFolder(folder);
-                //write this in the selected item
-                var imageFiles = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories);
-
-
+                dialog.InitialDirectory = "C:\\Users\\AFRACO\\Source\\Repos\\prismtest2\\prismtest2";
+                WINFORM.DialogResult result = dialog.ShowDialog();
+                if (result == WINFORM.DialogResult.OK)
+                {
+                    string folder = dialog.SelectedPath;
+                    ImageCollection = LoadImagesFromFolder(folder);
+                    //write this in the selected item
+                    var imageFiles = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories);
+                }
             }
         }
         private My_Image _myImages;
