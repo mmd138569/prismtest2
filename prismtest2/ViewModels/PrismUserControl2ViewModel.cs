@@ -16,9 +16,9 @@ using DelegateCommand = Prism.Commands.DelegateCommand;
 
 namespace prismtest2.ViewModels
 {
-    public class PrismUserControl2ViewModel : BindableBase,INavigationAware
+    public class PrismUserControl2ViewModel : BindableBase, INavigationAware
     {
-        
+
         private IRegionManager _regionManager;
         public ObservableCollection<double> listofInputs { get; set; }
         public DelegateCommand prevpage { get; set; }
@@ -98,13 +98,13 @@ namespace prismtest2.ViewModels
                 }
             }
 
-          //  if (a[6] != 0)
-          //  {
-               ArrivalsPerHour1.AddRange(a);
+            //  if (a[6] != 0)
+            //  {
+            ArrivalsPerHour1.AddRange(a);
             //}
 
             for (int hour = 0; hour < ArrivalsPerHour1.Count; hour++)
-            { 
+            {
                 for (int k = 0; k < ArrivalsPerHour1[hour]; k++)
                 {
                     ArrivalsPerHour.Add(hour);

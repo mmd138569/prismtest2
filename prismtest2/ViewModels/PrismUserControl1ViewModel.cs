@@ -104,7 +104,7 @@ namespace prismtest2.ViewModels
 
         private void LoginClick()
         {
-            if (username_txtbox != null && password_txtbox != null && reEnterPassword!=null)
+            if (username_txtbox != null && password_txtbox != null && reEnterPassword != null)
             {
                 string plainText = username_txtbox; //Text to encode
                 byte[] user_plain = Encoding.UTF8.GetBytes(plainText);

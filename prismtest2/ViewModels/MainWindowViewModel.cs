@@ -58,7 +58,7 @@ namespace prismtest2.ViewModels
         private void LoginClick()
         {
             fillData(checking_username, cheking_pasword);
-            if (accessing == true && checking_username!=null&& cheking_pasword!=null)
+            if (accessing == true && checking_username != null && cheking_pasword != null)
             {
                 _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
                 errorvisibility = Visibility.Collapsed;
@@ -102,7 +102,7 @@ namespace prismtest2.ViewModels
             get { return _Resizer_Height; }
             set { SetProperty(ref _Resizer_Height, value); }
         }
-        private string _checking_username="sdf";
+        private string _checking_username = "sdf";
 
         public string checking_username
         {
@@ -119,12 +119,12 @@ namespace prismtest2.ViewModels
         public void fillData(string cheking_username, string cheking_password)
         {
 
-         byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
-        //String base64String = "SGVsbG8gV29ybGQ=";
-         byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
+            byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
+            //String base64String = "SGVsbG8gV29ybGQ=";
+            byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
 
-        // employees = EmployeeDataAccess.employees;
-        user_list.Clear();
+            // employees = EmployeeDataAccess.employees;
+            user_list.Clear();
             foreach (var customerlistDTO in createuser.userListDtos())
             {
                 Users customer = new Users()
@@ -152,7 +152,7 @@ namespace prismtest2.ViewModels
                 user_list.Add(customer);
             }
         }
-        private string _cheking_pasword="df";
+        private string _cheking_pasword = "df";
         public string cheking_pasword
         {
             get { return _cheking_pasword; }
