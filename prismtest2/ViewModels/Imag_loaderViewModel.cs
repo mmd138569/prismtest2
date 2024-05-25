@@ -45,32 +45,36 @@ namespace prismtest2.ViewModels
         {
             if (image != null)
             {
-                Image<Gray, byte> inputImages = new Image<Gray, byte>(image);
-                listofinputs = new ObservableCollection<double>();
-                var parameter = new NavigationParameters();
-                var doubleValues =new List<double> ();
-                for (int y = 0; y < inputImages.Height; y++)
+                using (Image<Gray, byte> inputImages = new Image<Gray, byte>(image))
                 {
+                    listofinputs = new ObservableCollection<double>();
+                    var parameter = new NavigationParameters();
 
-                    for (int x = 0; x < inputImages.Width; x++)
+                    var doubleValues = new List<double>();
+                    for (int y = 0; y < inputImages.Height; y++)
                     {
-                        pixelValue = inputImages[y, x]; // Access the pixel value
-                        // Perform further analysis or computations based on the pixel value
-                        //Trace.WriteLine("=====================================");
-                        //Trace.WriteLine(pixelValue);
-                        double doubleValue = pixelValue.Intensity;
-                        //listofinputs.Add(doubleValue);
-                        doubleValues.Add(doubleValue);
+
+                        for (int x = 0; x < inputImages.Width; x++)
+                        {
+                            pixelValue = inputImages[y, x]; // Access the pixel value
+                                                            // Perform further analysis or computations based on the pixel value
+                                                            //Trace.WriteLine("=====================================");
+                                                            //Trace.WriteLine(pixelValue);
+                            double doubleValue = pixelValue.Intensity;
+                            //listofinputs.Add(doubleValue);
+                            doubleValues.Add(doubleValue);
+                        }
                     }
+
+                    parameter.Add("mydata", doubleValues);
+
+                    // PrismUserControl2ViewModel prismUser = new PrismUserControl2ViewModel(list of inputs);
+                    //we should not navigate the view and then send the data ,but we should use INavigate
+                    _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2", parameter);
+
                 }
-                parameter.Add("mydata", doubleValues);
-
-                // PrismUserControl2ViewModel prismUser = new PrismUserControl2ViewModel(list of inputs);
-                //we should not navigate the view and then send the data ,but we should use INavigate
-                _regionManager.RequestNavigate("ContentRegion", "PrismUserControl2",parameter);
-
             }
-           // Console.WriteLine(listofinputs);
+            // Console.WriteLine(listofinputs);
 
 
         }
@@ -81,10 +85,13 @@ namespace prismtest2.ViewModels
             //Image<Gray, byte> grayImage = image1.Convert<Gray, byte>();
             if (image != null)
             {
-                Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
-                Image<Bgr, byte> sharpenedImage = Sharpen(inputImage, 601, 321, 1.5, 1.5, 2);
-
-                CvInvoke.Imshow("sharpenedImage", sharpenedImage);
+                using (Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image))
+                {
+                    using (Image<Bgr, byte> sharpenedImage = Sharpen(inputImage, 601, 321, 1.5, 1.5, 2))
+                    {
+                        CvInvoke.Imshow("sharpenedImage", sharpenedImage);
+                    }
+                }
                 // Your code to save the image here
                 // For example:
                 // sharpenedImage.Save("output_image.jpg");
@@ -96,10 +103,12 @@ namespace prismtest2.ViewModels
         {
             if (image != null)
             {
-                Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
-                inputImage._EqualizeHist();
-                inputImage._GammaCorrect(1.5d);
-                CvInvoke.Imshow("sharpenedImage", inputImage);
+                using (Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image))
+                {
+                    inputImage._EqualizeHist();
+                    inputImage._GammaCorrect(1.5d);
+                    CvInvoke.Imshow("sharpenedImage", inputImage);
+                }
             }
         }
         public DelegateCommand Brightness { set; get; }
@@ -108,12 +117,12 @@ namespace prismtest2.ViewModels
         {
             if (image != null)
             {
-                Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image);
-
-
-                double brightnessFactor = 150;
-                inputImage._Mul(1 + brightnessFactor / 255.0);
-                CvInvoke.Imshow("sharpenedImage", inputImage);
+                using (Image<Bgr, byte> inputImage = new Image<Bgr, byte>(image))
+                {
+                    double brightnessFactor = 150;
+                    inputImage._Mul(1 + brightnessFactor / 255.0);
+                    CvInvoke.Imshow("sharpenedImage", inputImage);
+                }
             }
         }
         public static Image<Bgr, byte> Sharpen(Image<Bgr, byte> image, int w, int h, double sigma1, double sigma2, int k)
