@@ -28,6 +28,7 @@ namespace prismtest2.ViewModels
         }
         private DelegateCommand _minimizeCommand;
         public DelegateCommand MinimizeCommand =>
+
             _minimizeCommand ?? (_minimizeCommand = new DelegateCommand(ExecuteMinimizeCommand));
 
         void ExecuteMinimizeCommand()
