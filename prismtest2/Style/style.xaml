@@ -80,6 +80,31 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
+    <ControlTemplate x:Key="mini" TargetType="{x:Type ButtonBase}">
+        <Border x:Name="border" CornerRadius="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsDefaulted" Value="true">
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" TargetName="border" Value="#3C5B6F"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="#3C5B6F"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" TargetName="border" Value="#31363F"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="#31363F"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
     <!--<ControlTemplate x:Key="My_SVG" TargetType="{x:Type Path}">
         <Path Stroke="Black" Fill="Gray"
               Data="M 10,100 C 10,300 300,-200 300,100" />
@@ -109,6 +134,7 @@
     <PathGeometry x:Key="circul" Figures="M16 4C9.3844239 4 4 9.3844287 4 16C4 22.615571 9.3844239 28 16 28C22.615576 28 28 22.615571 28 16C28 9.3844287 22.615576 4 16 4 z M 16 6C21.534697 6 26 10.465307 26 16C26 21.534693 21.534697 26 16 26C10.465303 26 6 21.534693 6 16C6 10.465307 10.465303 6 16 6 z"/>
     <PathGeometry x:Key="prevbtn" Figures="M12.050781 3L0 12L12.050781 21L12.050781 15L24 15L24 9L12.050781 9L12.050781 3 z"/>
     <PathGeometry x:Key="close" Figures="M9.15625 6.3125L6.3125 9.15625L22.15625 25L6.21875 40.96875L9.03125 43.78125L25 27.84375L40.9375 43.78125L43.78125 40.9375L27.84375 25L43.6875 9.15625L40.84375 6.3125L25 22.15625Z"/>
+    <PathGeometry x:Key="minimize" Figures="M5 13 A 2.0002 2.0002 0 1 0 5 17L25 17 A 2.0002 2.0002 0 1 0 25 13L5 13 z"/>
 
 <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}" >
         <Border Background="{TemplateBinding Background}"

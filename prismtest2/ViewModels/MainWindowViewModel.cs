@@ -26,6 +26,14 @@ namespace prismtest2.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+        private DelegateCommand _minimizeCommand;
+        public DelegateCommand MinimizeCommand =>
+            _minimizeCommand ?? (_minimizeCommand = new DelegateCommand(ExecuteMinimizeCommand));
+
+        void ExecuteMinimizeCommand()
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
         private DelegateCommand _exitCommand;
         public DelegateCommand ExitCommand =>
             _exitCommand ?? (_exitCommand = new DelegateCommand(ExecuteExitCommand));
