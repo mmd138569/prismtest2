@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Collections;
 using System.Windows;
+using prismtest2.Models.Decrypting_Incrypting;
 
 namespace prismtest2.ViewModels
 {
@@ -18,6 +19,7 @@ namespace prismtest2.ViewModels
     {
         public static bool accessing = false;
 
+        public Encrypt enprypt = new Encrypt();
         //  string secret = "$Jk!pTq#20hdLA$5"; //encryption secret
         public byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
         public byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
@@ -108,17 +110,17 @@ namespace prismtest2.ViewModels
             {
                 string plainText = username_txtbox; //Text to encode
                 byte[] user_plain = Encoding.UTF8.GetBytes(plainText);
-                byte[] cipherUsername = Encrypt(user_plain, key, iv);
+                byte[] cipherUsername = enprypt.Encrypting(user_plain, key, iv);
                 string cipherUsernamestr = Convert.ToBase64String(cipherUsername);
 
                 string Emailtxt = Email_txtbox; //Text to encode
                 byte[] Emailplain = Encoding.UTF8.GetBytes(Emailtxt);
-                byte[] cipherEmail = Encrypt(Emailplain, key, iv);
+                byte[] cipherEmail = enprypt.Encrypting(Emailplain, key, iv);
                 string cipherEmailstr = Convert.ToBase64String(cipherEmail);
 
                 string paswordtxt = password_txtbox; //Text to encode
                 byte[] passwordplain = Encoding.UTF8.GetBytes(paswordtxt);
-                byte[] ciperpassword = Encrypt(passwordplain, key, iv);
+                byte[] ciperpassword = enprypt.Encrypting(passwordplain, key, iv);
                 string ciperpasswordstr = Convert.ToBase64String(ciperpassword);
                 if (reEnterPassword == password_txtbox)
                 {
@@ -159,25 +161,6 @@ namespace prismtest2.ViewModels
             get { return _Resizer_Height; }
             set { SetProperty(ref _Resizer_Height, value); }
         }
-        static byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
-        {
-            byte[] encryptedBytes = null;
-            // Set up the encryption objects
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = key;
-                aes.IV = iv;
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
 
-                // Encrypt the input plaintext using the AES algorithm
-                using (ICryptoTransform encryptor = aes.CreateEncryptor())
-                {
-                    encryptedBytes = encryptor.TransformFinalBlock(plainBytes, 0, plainBytes.Length);
-                }
-            }
-
-            return encryptedBytes;
-        }
     }
 }
