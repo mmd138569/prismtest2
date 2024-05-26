@@ -50,6 +50,7 @@ namespace prismtest2.ViewModels
             Signup = new DelegateCommand(OnClick);
             Login = new DelegateCommand(LoginClick);
             createuser = new CreateUser();
+            RestoreDownCommand = new DelegateCommand(RestoreDown);
             Resizer_Height = 510;
             Resizer_width = 310;
         }
@@ -175,12 +176,6 @@ namespace prismtest2.ViewModels
         }
 
         public DelegateCommand RestoreDownCommand { get; private set; }
-
-        public MainWindowViewModel()
-        {
-            RestoreDownCommand = new DelegateCommand(RestoreDown);
-        }
-
         private void RestoreDown()
         {
             WindowState = WindowState == WindowState.Normal ? WindowState.Minimized : WindowState.Normal;
