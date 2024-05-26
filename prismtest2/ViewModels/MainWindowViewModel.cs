@@ -167,5 +167,23 @@ namespace prismtest2.ViewModels
                 }
             }
         }
+        private WindowState _windowState = WindowState.Normal;
+        public WindowState WindowState
+        {
+            get { return _windowState; }
+            set { SetProperty(ref _windowState, value); }
+        }
+
+        public DelegateCommand RestoreDownCommand { get; private set; }
+
+        public MainWindowViewModel()
+        {
+            RestoreDownCommand = new DelegateCommand(RestoreDown);
+        }
+
+        private void RestoreDown()
+        {
+            WindowState = WindowState == WindowState.Normal ? WindowState.Minimized : WindowState.Normal;
+        }
     }
 }
