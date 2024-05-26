@@ -118,7 +118,6 @@ namespace prismtest2.ViewModels
         }
         public void fillData(string cheking_username, string cheking_password)
         {
-
             byte[] key = Encoding.UTF8.GetBytes("$Jk!pTq#20hdLA$5");
             //String base64String = "SGVsbG8gV29ybGQ=";
             byte[] iv = Encoding.UTF8.GetBytes("SGVsbG8gV29ybGQ=");   // 16-byte initialization vector
