@@ -190,6 +190,7 @@ namespace prismtest2.ViewModels
         }
         private ObservableCollection<My_Image> LoadImagesFromFolder(string folderPath)
         {
+
             var imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
                 .Where(file => IsImageFile(file))
                 .Select(file => new My_Image { ImagePath = file });
