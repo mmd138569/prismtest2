@@ -12,11 +12,13 @@ using System.Security.Cryptography;
 using SharpDX.Text;
 using System.IO;
 using System.Linq;
+using prismtest2.Models.Decrypting;
 
 namespace prismtest2.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        public Decrypt decrypting = new Decrypt();
         public static bool accessing = false;
         public CreateUser createuser;
         ObservableCollection<Users> user_list = new ObservableCollection<Users>();
@@ -137,11 +139,12 @@ namespace prismtest2.ViewModels
                 //==================================== NOTE =============================
                 //if we use UTF8 it convert to the 24byte and we cant decrypt becuase our input is not valid. actually we should use frombasestring to convert to byte array 
                 byte[] data = Convert.FromBase64String(customer.Username);
-                string decryptedBytes = Decrypt(data, key, iv);
+                
+                string decryptedBytes = decrypting.Decryptin(data, key, iv);
 
                 //========================================================================
                 byte[] data1 = Convert.FromBase64String(customer.Password);
-                string decryptedBytes1 = Decrypt(data1, key, iv);
+                string decryptedBytes1 = decrypting.Decryptin(data1, key, iv);
 
 
                 if (decryptedBytes1 == cheking_password && decryptedBytes == cheking_username)
@@ -163,25 +166,6 @@ namespace prismtest2.ViewModels
                     RaisePropertyChanged();
                 }
             }
-        }
-        static string Decrypt(byte[] cipheredtext, byte[] key, byte[] iv)
-        {
-            string simpletext = String.Empty;
-            using (Aes aes = Aes.Create())
-            {
-                ICryptoTransform decryptor = aes.CreateDecryptor(key, iv);
-                using (MemoryStream memoryStream = new MemoryStream(cipheredtext))
-                {
-                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader streamReader = new StreamReader(cryptoStream))
-                        {
-                            simpletext = streamReader.ReadToEnd();
-                        }
-                    }
-                }
-            }
-            return simpletext;
         }
     }
 }
