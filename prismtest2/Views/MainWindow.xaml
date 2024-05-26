@@ -7,6 +7,7 @@
         AllowsTransparency="True"
         Background="#31363F"
         MouseDown="Window_MouseDown"
+        WindowState="{Binding WindowState}"
         Title="{Binding Title}" MaxHeight="{Binding Resizer_Height}" MinWidth="{Binding Resizer_width}" MinHeight="{Binding Resizer_Height}" MaxWidth="{Binding Resizer_width}" >
     <Grid  Background="#31363F">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="45" Height="20" VerticalAlignment="Top">
