@@ -25,11 +25,11 @@
                                       Interval="1" Grid.ColumnSpan="3" />
             <StackPanel >
 
-                <Button Command="{Binding prevpage}" BorderBrush="#31363F" Width="45" Height="45" Foreground="#31363F" Background="#31363F" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Command="{Binding prevpage}" Template="{DynamicResource mini}" BorderBrush="#31363F" Width="45" Height="45" Foreground="#31363F" Background="#31363F" HorizontalAlignment="Left" VerticalAlignment="Top">
 
-                    <Path Data="{StaticResource prevbtn }"  Width="30"  Fill="Bisque"  Margin="10,10,0,0" Height="30"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Path Data="{StaticResource prevbtn }"   Width="40"  Fill="Bisque" Height="30"  VerticalAlignment="Top" HorizontalAlignment="Center" Stretch="Fill"/>
                 </Button>
-                <TextBlock Text="Abundance of the color"  TextAlignment="Center" FontSize="16" Foreground= "Bisque" Grid.ColumnSpan="2"/>
+                <TextBlock Text="Abundance of the color"  TextAlignment="Center" FontSize="16" Foreground= "Bisque" Grid.ColumnSpan="2" Margin="0,-10,0,0"/>
             </StackPanel>
             <telerik:RadCartesianChart Palette="Windows11" Margin="0,44,0,0" Foreground="Bisque">
                 <telerik:RadCartesianChart.VerticalAxis>
