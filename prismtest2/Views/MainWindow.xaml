@@ -43,7 +43,7 @@
                                             Foreground="Bisque"
                                             telerik:CornerRadiusHelper.ClipRadius="2"
                                             HorizontalAlignment="Center" VerticalAlignment="Center"
-                                            WatermarkContent="Enter the password" />
+                                            WatermarkContent=" Enter the password" />
                 </StackPanel>
                 <TextBlock Text="{Binding errortxtblock}" Foreground="Bisque" HorizontalAlignment="Center" Visibility="{Binding errorvisibility}" Style="{StaticResource ErorLabel}"></TextBlock>
             </StackPanel>
