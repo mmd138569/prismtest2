@@ -32,7 +32,7 @@
             <StackPanel Margin="2,70,2,2" Visibility="Visible" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="User Name:" Foreground="Bisque" Margin="12,20,2,2"></Label>
-                    <TextBox Text="{Binding checking_username}" Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180"  Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque"></TextBox>
+                    <TextBox Text="{Binding checking_username}"  Template="{StaticResource TextBoxBaseControlTemplate}" Background="#31363F" Height="30" Width="180"  Margin="2,20,22,20" BorderThickness="1" BorderBrush="Bisque" Foreground="Bisque"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="password:" Foreground="Bisque" Margin="12,20,6,2"/>
