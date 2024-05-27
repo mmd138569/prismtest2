@@ -46,13 +46,13 @@
                                             WatermarkContent=" Enter the password" >
                         <telerik:RadPasswordBox.Style>
                             <Style TargetType="{x:Type telerik:RadPasswordBox}">
-                            <Setter Property="Foreground" Value="White"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="LightBlue"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="LightBlue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
                         </telerik:RadPasswordBox.Style>
                     </telerik:RadPasswordBox>
                 </StackPanel>
