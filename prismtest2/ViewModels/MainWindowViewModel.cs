@@ -12,7 +12,9 @@ using System.Security.Cryptography;
 using SharpDX.Text;
 using System.IO;
 using System.Linq;
+using System.Windows.Input;
 using prismtest2.Models.Decrypting;
+using Telerik.Windows.Controls;
 
 namespace prismtest2.ViewModels
 {
@@ -28,29 +30,30 @@ namespace prismtest2.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-        private DelegateCommand _minimizeCommand;
-        public DelegateCommand MinimizeCommand =>
+        private Prism.Commands.DelegateCommand _minimizeCommand;
+        public Prism.Commands.DelegateCommand MinimizeCommand =>
 
-            _minimizeCommand ?? (_minimizeCommand = new DelegateCommand(ExecuteMinimizeCommand));
+            _minimizeCommand ?? (_minimizeCommand = new Prism.Commands.DelegateCommand(ExecuteMinimizeCommand));
 
         void ExecuteMinimizeCommand()
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
-        private DelegateCommand _exitCommand;
-        public DelegateCommand ExitCommand =>
-            _exitCommand ?? (_exitCommand = new DelegateCommand(ExecuteExitCommand));
+        private Prism.Commands.DelegateCommand _exitCommand;
+        public Prism.Commands.DelegateCommand ExitCommand =>
+            _exitCommand ?? (_exitCommand = new Prism.Commands.DelegateCommand(ExecuteExitCommand));
 
         private IRegionManager _regionManager;
-        public DelegateCommand Signup { get; set; }
-        public DelegateCommand Login { get; set; }
+        public Prism.Commands.DelegateCommand Signup { get; set; }
+        public ICommand LoginCommand { get; set; }
+        public Prism.Commands.DelegateCommand Login { get; set; }
         public MainWindowViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            Signup = new DelegateCommand(OnClick);
-            Login = new DelegateCommand(LoginClick);
+            Signup = new Prism.Commands.DelegateCommand(OnClick);
+            LoginCommand = new DelegateCommand<RadPasswordBox>(OnLoginCommandExecuted);
             createuser = new CreateUser();
-            RestoreDownCommand = new DelegateCommand(RestoreDown);
+            RestoreDownCommand = new Prism.Commands.DelegateCommand(RestoreDown);
             Resizer_Height = 510;
             Resizer_width = 310;
         }
@@ -58,10 +61,10 @@ namespace prismtest2.ViewModels
         {
             Application.Current.Shutdown();
         }
-        private void LoginClick()
+        private void OnLoginCommandExecuted(RadPasswordBox passwordBox)
         {
-            fillData(checking_username, cheking_pasword);
-            if (accessing == true && checking_username != null && cheking_pasword != null)
+            fillData(checking_username, passwordBox.Password);
+            if (accessing == true && checking_username != null && passwordBox.ToString() != null)
             {
                 _regionManager.RequestNavigate("ContentRegion", "Imag_loader");
                 errorvisibility = Visibility.Collapsed;
@@ -175,7 +178,7 @@ namespace prismtest2.ViewModels
             set { SetProperty(ref _windowState, value); }
         }
 
-        public DelegateCommand RestoreDownCommand { get; private set; }
+        public Prism.Commands.DelegateCommand RestoreDownCommand { get; private set; }
         private void RestoreDown()
         {
             WindowState = WindowState == WindowState.Normal ? WindowState.Minimized : WindowState.Normal;
